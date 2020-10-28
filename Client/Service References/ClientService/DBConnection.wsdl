@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DBConnection" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IDBConnection_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DBService" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDBConnection_GetSum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSum" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_GetSum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_GetDiff_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDiff" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_GetDiff_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDiffResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_GetTableData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableData" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_GetTableData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_signUpUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:signUpUser" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_signUpUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:signUpUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_SignInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:SignInUser" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_SignInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SignInUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getCrosswords_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCrosswords" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getCrosswords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCrosswordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_createCrossword_InputMessage">
+    <wsdl:part name="parameters" element="tns:createCrossword" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_createCrossword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createCrosswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getThemes_InputMessage">
+    <wsdl:part name="parameters" element="tns:getThemes" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getThemes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getThemesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getUserCrosswords_InputMessage">
+    <wsdl:part name="parameters" element="tns:getUserCrosswords" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getUserCrosswords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getUserCrosswordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_insertQuestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:insertQuestions" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_insertQuestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:insertQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getCrosswordQuestions_InputMessage">
+    <wsdl:part name="parameters" element="tns:getCrosswordQuestions" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_getCrosswordQuestions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:getCrosswordQuestionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDBConnection">
+    <wsdl:operation name="GetSum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetSum" message="tns:IDBConnection_GetSum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/GetSumResponse" message="tns:IDBConnection_GetSum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDiff">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetDiff" message="tns:IDBConnection_GetDiff_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/GetDiffResponse" message="tns:IDBConnection_GetDiff_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTableData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetTableData" message="tns:IDBConnection_GetTableData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/GetTableDataResponse" message="tns:IDBConnection_GetTableData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="signUpUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/signUpUser" message="tns:IDBConnection_signUpUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/signUpUserResponse" message="tns:IDBConnection_signUpUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SignInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/SignInUser" message="tns:IDBConnection_SignInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/SignInUserResponse" message="tns:IDBConnection_SignInUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCrosswords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getCrosswords" message="tns:IDBConnection_getCrosswords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordsResponse" message="tns:IDBConnection_getCrosswords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createCrossword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/createCrossword" message="tns:IDBConnection_createCrossword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/createCrosswordResponse" message="tns:IDBConnection_createCrossword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getThemes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getThemes" message="tns:IDBConnection_getThemes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getThemesResponse" message="tns:IDBConnection_getThemes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getUserCrosswords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getUserCrosswords" message="tns:IDBConnection_getUserCrosswords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getUserCrosswordsResponse" message="tns:IDBConnection_getUserCrosswords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="insertQuestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/insertQuestions" message="tns:IDBConnection_insertQuestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/insertQuestionsResponse" message="tns:IDBConnection_insertQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="getCrosswordQuestions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordQuestions" message="tns:IDBConnection_getCrosswordQuestions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordQuestionsResponse" message="tns:IDBConnection_getCrosswordQuestions_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDBConnection" type="tns:IDBConnection">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetSum">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/GetSum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDiff">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/GetDiff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableData">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/GetTableData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signUpUser">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/signUpUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignInUser">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/SignInUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCrosswords">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/getCrosswords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCrossword">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/createCrossword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getThemes">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/getThemes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserCrosswords">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/getUserCrosswords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertQuestions">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/insertQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCrosswordQuestions">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/getCrosswordQuestions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IDBConnection" type="tns:IDBConnection">
+    <wsp:PolicyReference URI="#NetTcpBinding_IDBConnection_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetSum">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/GetSum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDiff">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/GetDiff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTableData">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/GetTableData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="signUpUser">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/signUpUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignInUser">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/SignInUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCrosswords">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/getCrosswords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCrossword">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/createCrossword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getThemes">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/getThemes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserCrosswords">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/getUserCrosswords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertQuestions">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/insertQuestions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCrosswordQuestions">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/getCrosswordQuestions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DBConnection">
+    <wsdl:port name="BasicHttpBinding_IDBConnection" binding="tns:BasicHttpBinding_IDBConnection">
+      <soap:address location="http://localhost:8080/DBConnection" />
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IDBConnection" binding="tns:NetTcpBinding_IDBConnection">
+      <soap12:address location="net.tcp://localhost:45617/DBConnection" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:45617/DBConnection</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>DESKTOP-PADSUVV\lenovo</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
