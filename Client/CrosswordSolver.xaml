@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         Title="CrosswordSolver"
-        WindowStyle="None" Height="500" Width="600"
+        WindowStyle="None" Height="581.466" Width="767.77"
         ResizeMode="NoResize"
         MouseMove="Window_MouseMove">
     <Window.Resources>
@@ -16,23 +16,62 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    <Grid>
+    <Grid x:Name="Field">
         <StackPanel Orientation="Vertical">
             <StackPanel Orientation="Horizontal" Height="40" Margin="0,0,-0.2,0" Background="#FF1B0086">
-                <StackPanel Width="84">
+                <StackPanel Width="100">
                     <Image Margin="20,0" Width="40" Height="40" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Logo2.png" />
                 </StackPanel>
-                <StackPanel Width="480">
+                <StackPanel Width="632">
                     <Label VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding Namek__BackingField}"></Label>
                 </StackPanel>
-                <StackPanel VerticalAlignment="Center">
+                <StackPanel  VerticalAlignment="Center">
                     <Button x:Name="CloseBtn" Style="{StaticResource ModernButton}" Width="20" Height="20" Content="X" Click="CloseBtn_Click"></Button>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="0,0,-0.2,0" Height="453">
-                <StackPanel x:Name="CrosswordPanel" Margin="0,0,0,-0.4" Width="479"></StackPanel>
-                <StackPanel x:Name="QuestionsPanel" Margin="0,0,0,-0.4" Width="113"></StackPanel>
+            <StackPanel Orientation="Horizontal" Height="540">
+                <StackPanel Width="558">
+                    <ScrollViewer x:Name="scrollView" Height="542" Margin="0,0,-0.6,0">
+                        <Canvas x:Name="CrosswordPanel"  Height="460" Width="450"/>
+                    </ScrollViewer>
+                </StackPanel>
+
+
+                <StackPanel Width="209" >
+                    <ListBox SelectionChanged="crosswordQuestions_Selected" TextBlock.Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FFD8D7E5" x:Name="crosswordQuestions" HorizontalContentAlignment="Stretch" Height="538"  FontSize="14" FontFamily="Segoe UI Semibold" BorderBrush="#FFEAEAEA" Margin="0,0,-0.2,0">
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock TextWrapping="Wrap" Width="130" Height="Auto" Text="{Binding}" />
+                                </StackPanel>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Style.Resources>
+
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="BorderBrush" Value="#FF00D9EE" />
+                                <Setter Property="Margin" Value="0,3,0,0" />
+
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </StackPanel>
             </StackPanel>
+
+
+
+
+
+
         </StackPanel>
 
     </Grid>

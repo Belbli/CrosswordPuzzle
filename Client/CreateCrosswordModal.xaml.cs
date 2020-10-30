@@ -15,6 +15,7 @@ namespace Client
         DBConnectionClient client;
         ObservableCollection<QuestionAnswer> list = new ObservableCollection<QuestionAnswer>();
         User creator;
+        string prevWord = "";
 
         public CreateCrosswordModal(User user)
         {
@@ -27,28 +28,60 @@ namespace Client
 
         private void AddRow(object sender, RoutedEventArgs e)
         {
-            QuestionAnswer qa = new QuestionAnswer();
-            qa.Answerk__BackingField = answerBox.Text;
-            qa.Questionk__BackingField = questionBox.Text;
-
-            if(questionBox.Text != "" && answerBox.Text != "")
+            bool correct = checkWordToInsert(answerBox.Text);
+            if(!correct)
             {
-                if (questionsLB.SelectedIndex > -1)
+                MessageBox.Show("Current word is baad(");
+            }
+            if (correct)
+            {
+                QuestionAnswer qa = new QuestionAnswer();
+                qa.Answerk__BackingField = answerBox.Text;
+                qa.Questionk__BackingField = questionBox.Text;
+                prevWord = answerBox.Text;
+                if (questionBox.Text != "" && answerBox.Text != "")
                 {
-                    list[questionsLB.SelectedIndex] = qa;
-                    questionsLB.SelectedIndex = -1;
+                    if (questionsLB.SelectedIndex > -1)
+                    {
+                        list[questionsLB.SelectedIndex] = qa;
+                        questionsLB.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        list.Add(qa);
+                    }
+                    questionBox.Text = "";
+                    answerBox.Text = "";
                 }
                 else
                 {
-                    list.Add(qa);
+                    MessageBox.Show("Question or answer field is empty");
                 }
-                questionBox.Text = "";
-                answerBox.Text = "";
             }
-            else
+            
+        }
+
+        private bool checkWordToInsert(string text)
+        {
+            bool correct = false;
+            if(prevWord.Length == 0)
             {
-                MessageBox.Show("Question or answer field is empty");
+                return true;
             }
+            string firstWord = prevWord.Substring(prevWord.Length / 2+1);
+            string secondWord = text.Substring(0, text.Length / 2+1);
+            for (int i = 0; i < firstWord.Length; i++)
+            {
+                for (int j = 0; j  < secondWord.Length; j++)
+                {
+                    if(firstWord[i] == secondWord[j])
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return correct;
         }
 
         private bool hasEmptyCells(ItemCollection rows)

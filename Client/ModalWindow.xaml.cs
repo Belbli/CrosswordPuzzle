@@ -3,9 +3,6 @@ using Client.ClientService;
 
 namespace Client
 {
-    /// <summary>
-    /// Логика взаимодействия для ModalWindow.xaml
-    /// </summary>
     public partial class ModalWindow : Window
     {
         private DBConnectionClient client;
@@ -35,9 +32,8 @@ namespace Client
             }
             else
             {
-                MessageBox.Show("Not Registered");
+                MessageBox.Show("User exists");
             }
-            client.Close();
         }
 
         private void LogInBtn_Click(object sender, RoutedEventArgs e)

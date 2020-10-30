@@ -9,7 +9,7 @@
         Title="MainWindow" Height="560" Width="860"
         WindowStartupLocation="CenterScreen" Background="#FF4E3D65"
         WindowStyle="None" ResizeMode="NoResize"
-        MouseMove="Window_MouseMove">
+        >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

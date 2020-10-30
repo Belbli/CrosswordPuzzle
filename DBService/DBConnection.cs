@@ -56,22 +56,45 @@ namespace DBService
         public int signUpUser(string name, string login, string password)
         {
             int success = 0;
+            if (findUserByLogin(login) != -1)
+            {
+                return 0;
+            }
             using (var con = new NpgsqlConnection(connStr))
             {
                 con.Open();
 
-                var sql = "select * from insert_user('" + name + "', '" + login + "', '" + password + "')";
+                var sql = String.Format("select * from insert_user('{0}', '{1}', '{2}');", name, login, password);
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
                     using (NpgsqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        rdr.Read();
-                        success = rdr.GetInt32(0);
+                        if(rdr.Read())
+                            success = rdr.GetInt32(0);
                     }
                 }
             }
             return success;
+        }
+
+        public long findUserByLogin(string login)
+        {
+            long userId = -1;
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+                var sql = String.Format("select user_id from users_data where user_login = '{0}'", login);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        if (rdr.Read())
+                            userId = rdr.GetInt64(0);
+                    }
+                }
+            }
+            return userId;
         }
 
         public User SignInUser(string login, string password)
@@ -87,13 +110,14 @@ namespace DBService
                 {
                     using (NpgsqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        rdr.Read();
+                        if(rdr.Read())
+                        {
+                            long id = rdr.GetInt32(0);
+                            string name = rdr.GetString(1);
 
-                        long id = rdr.GetInt32(0);
-                        string name = rdr.GetString(1);
-                        
-                        if(name != null)
-                            user = new User(id, name, login);
+                            if (name != null)
+                                user = new User(id, name, login);
+                        }
                     }
                 }
             }
@@ -116,8 +140,8 @@ namespace DBService
                 {
                     using (NpgsqlDataReader rdr = cmd.ExecuteReader())
                     {
-                        rdr.Read();
-                        crosswordID = rdr.GetInt32(0);
+                        if(rdr.Read())
+                            crosswordID = rdr.GetInt32(0);
                     }
                 }
             }
@@ -236,7 +260,7 @@ namespace DBService
                     {
                         while (rdr.Read())
                         {
-                            QuestionAnswer cr = new QuestionAnswer(rdr.GetString(0), rdr.GetString(0));
+                            QuestionAnswer cr = new QuestionAnswer(rdr.GetString(0), rdr.GetString(1));
                             questions.Add(cr);
                         }
                     }
