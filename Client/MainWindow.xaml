@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Client"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Client.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="571.2" Width="980"
+        Title="MainWindow" Height="571.2" Width="1073.6"
         WindowStartupLocation="CenterScreen" Background="#FF4E3D65"
         WindowStyle="None" ResizeMode="NoResize"
-        >
+        MouseMove="Window_MouseMove">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,13 +20,13 @@
     </Window.Resources>
     <StackPanel Background="#FF200A3A">
         <StackPanel Height="80" Orientation="Horizontal" Background="#FF02005F">
-            <StackPanel Width="525" >
+            <StackPanel Width="614" >
                 <StackPanel Width="80" Height="80" Margin="30,0,0,0" HorizontalAlignment="Left">
                     <Image Width="80" Height="80" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Logo2.png" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Visibility="Hidden" FlowDirection="RightToLeft" HorizontalAlignment="Right" x:Name="CoinsPanel" Orientation="Horizontal" Width="357">
-               <Image Width="25" Height="25" VerticalAlignment="Center" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Coin.png" />
+                <Image Width="25" Height="25" VerticalAlignment="Center" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Coin.png" />
                 <TextBlock x:Name="CoinsTB" FontSize="20" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
             </StackPanel>
             <StackPanel Width="116" VerticalAlignment="Center" Margin="0,20">
@@ -35,8 +35,18 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" x:Name="MainSection" HorizontalAlignment="Right" Height="491" Margin="0,0,0,0" VerticalAlignment="Top" Width="980" Background="#FF1B1445">
-            <StackPanel Orientation="Vertical" Margin="60,40,0,-0.2" Width="710">
+        <StackPanel Orientation="Horizontal" x:Name="MainSection" HorizontalAlignment="Right" Height="491" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="1074" Background="#FF1B1445">
+            <StackPanel Margin="0,0,0,0.2" Width="107">
+                <TextBox>FILTER</TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="60,0,0,0.2" Width="699">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBox x:Name="SearchBox" Width="300">
+
+                    </TextBox>
+                    <Button x:Name="SearchBtn" Click="SearchBtn_Click">Find</Button>
+                </StackPanel>
+                
                 <StackPanel x:Name="welcomeText" Visibility="Collapsed">
                     <Label Margin="30,0,0,0" Foreground="White" FontSize="30">
                         WELCOME TO THE
@@ -83,8 +93,8 @@
                                     <GridSplitter Width="2" Grid.Column="0"/>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Themek__BackingField}" />
                                     <GridSplitter Width="2" Grid.Column="1" />
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding OwnerLogink__BackingField}" />
-                                    <Button x:Name="SolveBtn" VerticalAlignment="Center" Grid.Column="2" Style="{StaticResource ModernButton}" TextBlock.FontSize="12" Width="60" Height="30" HorizontalAlignment="Right" Click="SolveBtn_Click">Solve!</Button>
+                                    <TextBlock x:Name="CreatorHeader" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding OwnerLogink__BackingField}" />
+                                    <Button x:Name="SolveBtn" VerticalAlignment="Center" Grid.Column="2" Style="{StaticResource ModernButton}" TextBlock.FontSize="12" Width="60" Height="30" HorizontalAlignment="Right" Click="SolveBtn_Click" Content="Solve!"></Button>
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -118,9 +128,9 @@
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="crosswordsBtn" Height="30" Content="Crosswords" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="crosswordsBtn_Click" />
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="createBtn" Height="30" Content="Create Crossword" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="createBtn_Click" />
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="logOutBtn" Visibility="Hidden" Content="Log Out" Height="30" Foreground="White" FontFamily="DengXian" FontSize="16" Click="logOutBtn_Click"></Button>
-                
+
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="exitBtn" HorizontalContentAlignment="Right" Padding="0,0,30,0" Height="30" Margin="0,220,0,0" Content="Exit" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="exitBtn_Click" />
-                
+
             </StackPanel>
         </StackPanel>
 

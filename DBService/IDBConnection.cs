@@ -46,5 +46,17 @@ namespace DBService
 
         [OperationContract]
         void saveUsersCoins(long userId, int coins);
+
+        [OperationContract]
+        List<Crossword> filterCrosswordsByTheme(int offset, int count, int themeId);
+
+        [OperationContract]
+        List<Crossword> findCrosswords(int offset, int count, string crosswordName);
+
+        [OperationContract]
+        List<Crossword> filterUserCrosswordsByTheme(int id, int offset, int length, int themeId);
+
+        [OperationContract]
+        int countCrosswords();
     }
 }

@@ -174,4 +174,65 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="filterCrosswordsByTheme">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="offset" type="xs:int" />
+        <xs:element minOccurs="0" name="count" type="xs:int" />
+        <xs:element minOccurs="0" name="themeId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filterCrosswordsByThemeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="filterCrosswordsByThemeResult" nillable="true" type="q8:ArrayOfCrossword" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findCrosswords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="offset" type="xs:int" />
+        <xs:element minOccurs="0" name="count" type="xs:int" />
+        <xs:element minOccurs="0" name="crosswordName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="findCrosswordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="findCrosswordsResult" nillable="true" type="q9:ArrayOfCrossword" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filterUserCrosswordsByTheme">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="offset" type="xs:int" />
+        <xs:element minOccurs="0" name="length" type="xs:int" />
+        <xs:element minOccurs="0" name="themeId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="filterUserCrosswordsByThemeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="filterUserCrosswordsByThemeResult" nillable="true" type="q10:ArrayOfCrossword" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countCrosswords">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countCrosswordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="countCrosswordsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

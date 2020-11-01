@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="CreateCrosswordModal" Height="409.728" Width="696.447"
         WindowStyle="None" ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        >
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -65,7 +66,7 @@
                     <TextBox x:Name="answerBox" Margin="25,0,0,0"></TextBox>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Bottom"  Margin="10,0,0,0" Width="60">
-                    <Button Style="{StaticResource ModernButton}" Height="20" Click="AddRow">Add Row</Button>
+                    <Button VerticalAlignment="Center" Style="{StaticResource ModernButton}" Height="20" Click="AddRow">Add Row</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" Height="284" Margin="0,0,0.4,0">

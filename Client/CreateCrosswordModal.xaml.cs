@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System;
+using System.Windows.Input;
 
 namespace Client
 {
@@ -12,7 +13,6 @@ namespace Client
     /// </summary>
     public partial class CreateCrosswordModal : Window
     {
-       
         ObservableCollection<QuestionAnswer> questionsAnsrews = new ObservableCollection<QuestionAnswer>();
         ObservableCollection<QuestionAnswer> reserveWords = new ObservableCollection<QuestionAnswer>();
         User creator;
@@ -24,10 +24,19 @@ namespace Client
             creator = user;
             DBConnectionClient client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
             CrosswordThemes.ItemsSource = client.getThemes();
+            
             questionsLB.ItemsSource = questionsAnsrews;
             ReserveWordsLB.ItemsSource = reserveWords;
 
             client.Close();
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
         }
 
         private void AddRow(object sender, RoutedEventArgs e)
@@ -191,8 +200,31 @@ namespace Client
             {
                 questionBox.Text = qa.Questionk__BackingField;
                 answerBox.Text = qa.Answerk__BackingField;
+                if (questionsLB.SelectedIndex > 0)
+                    prevWord = (questionsLB.Items[questionsLB.SelectedIndex - 1] as QuestionAnswer).Answerk__BackingField;
+                else
+                    prevWord = "";
+                questionsAnsrews.RemoveAt(questionsLB.SelectedIndex);
+                checkCorrect();
             }
+        }
 
+        private void checkCorrect()
+        {
+            if(questionsAnsrews.Count > 0)
+                prevWord = questionsAnsrews[0].Answerk__BackingField;
+            for (int i = 0; i < questionsAnsrews.Count-1; i++)
+            {
+                if (!checkWordToInsert(questionsAnsrews[i + 1].Answerk__BackingField))
+                {
+                    reserveWords.Add(questionsAnsrews[i + 1]);
+                    questionsAnsrews.RemoveAt(i + 1);
+                }
+                else
+                {
+                    prevWord = questionsAnsrews[i + 1].Answerk__BackingField;
+                }
+            }
         }
 
         private void CrosswordName_TextChanged(object sender, TextChangedEventArgs e)

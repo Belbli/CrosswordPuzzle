@@ -283,5 +283,105 @@ namespace DBService
             }
             return questions;
         }
+
+        public List<Crossword> filterCrosswordsByTheme(int offset, int count, int themeId)
+        {
+            List<Crossword> crosswords = new List<Crossword>();
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                var sql = String.Format("select * from select_crosswords({0}, {1}, {2})", offset, count, themeId);
+
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            long id = rdr.GetInt32(0);
+                            string name = rdr.GetString(1);
+                            int theme = rdr.GetInt32(2);
+                            string owner = rdr.GetString(3);
+                            crosswords.Add(new Crossword(id, name, theme, owner));
+                        }
+                    }
+                }
+            }
+            return crosswords;
+        }
+
+        public List<Crossword> filterUserCrosswordsByTheme(int id, int offset, int length, int themeId)
+        {
+            List<Crossword> crosswords = new List<Crossword>();
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                var sql = String.Format("select * from get_user_crosswords({0}, {1}, {2}, {3})", id, offset, length, themeId);
+
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            Crossword cr = new Crossword(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2));
+                            crosswords.Add(cr);
+                        }
+                    }
+                }
+            }
+            return crosswords;
+        }
+
+        public List<Crossword> findCrosswords(int offset, int count, string crosswordName)
+        {
+            List<Crossword> crosswords = new List<Crossword>();
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                var sql = String.Format("select * from find_crossword({0}, {1}, '{2}')", offset, count, crosswordName);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        while (rdr.Read())
+                        {
+                            long id = rdr.GetInt32(0);
+                            string name = rdr.GetString(1);
+                            int theme = rdr.GetInt32(2);
+                            string owner = rdr.GetString(3);
+                            Console.WriteLine(id);
+                            crosswords.Add(new Crossword(id, name, theme, owner));
+                        }
+                    }
+                }
+            }
+            return crosswords;
+        }
+
+        public int countCrosswords()
+        {
+            List<Crossword> crosswords = new List<Crossword>();
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                var sql = "SELECT COUNT(*) from crosswords";
+
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        rdr.Read();
+                        return rdr.GetInt32(0);
+                    }
+                }
+            }
+            return 0;
+        }
     }
 }
