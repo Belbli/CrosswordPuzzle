@@ -17,31 +17,40 @@ namespace Client
         ObservableCollection<string> questions = new ObservableCollection<string>();
         int selectedRow = -1;
         public static ListBox lb;
+        CrossField field;
+        User user;
 
-        public static int cellSize = 20;
+        public static int cellSize = 25;
 
-        public CrosswordSolver(Crossword cw)
+        public CrosswordSolver(Crossword cw, User user)
         {
-            CrossField field = new CrossField(cw);
-            
+            field = new CrossField(cw);
+            this.user = user;
             field.createCrossFields();
            
             labels = field.getWords();
             InitializeComponent();
+            
             for (int i = 0; i < labels.Count; i++)
             {
                 for (int j = 0; j < labels[i].getWord().Count; j++)
                 {
+                    labels[i].getWord()[j].Style = Resources["CrosswordCell"] as Style;
                     CrosswordPanel.Children.Add(labels[i].getWord()[j]);
                 }
             }
 
             for (int i = 0; i < cw.questionsk__BackingField.Length; i++)
             {
-                questions.Add((i+1) + ". ewfwefwefwef ewf gg er ge htdf dg ertb g fbtrb rtb" + cw.questionsk__BackingField[i].Questionk__BackingField);
+                questions.Add((i+1) + ". " + cw.questionsk__BackingField[i].Questionk__BackingField);
             }
             lb = crosswordQuestions;
             crosswordQuestions.ItemsSource = questions;
+            if(user != null)
+            {
+                CoinsPanel.Visibility = Visibility.Visible;
+                CoinsTb.Text = user.Coinsk__BackingField.ToString();
+            }
         }
 
         private void Window_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
@@ -61,12 +70,12 @@ namespace Client
         {
             if(selectedRow != -1 && !labels[selectedRow].solved)
             {
-                colorWord(new SolidColorBrush(Colors.White), selectedRow, 0);
+                colorWord(new SolidColorBrush(Colors.DarkBlue), selectedRow, 0);
             }
             selectedRow = crosswordQuestions.SelectedIndex;
             
             
-            colorWord(new SolidColorBrush(Colors.BlueViolet), selectedRow, 50);
+            colorWord((SolidColorBrush)(new BrushConverter().ConvertFrom("#b2c91c")), selectedRow, 100);
             
         }
 
@@ -79,15 +88,71 @@ namespace Client
                 Canvas.SetZIndex(tb, zIndex);
             }
         }
+
+        private void LetterHint_Click(object sender, RoutedEventArgs e)
+        {
+            if(field.solvedWords < labels.Count)
+            {
+                Random rand = new Random();
+                int wordIndex;
+                int letterIndex;
+                do
+                {
+                    wordIndex = rand.Next(0, labels.Count);
+                    letterIndex = (int)rand.Next(0, labels[wordIndex].getWord().Count);
+
+                } while (labels[wordIndex].getWord()[letterIndex].Text != "");
+
+                if (labels[wordIndex].getWord()[letterIndex].Text == "")
+                {
+
+                    labels[wordIndex].getWord()[letterIndex].Text = labels[wordIndex].answer[letterIndex].ToString();
+                    
+                    System.Drawing.Point p = labels[wordIndex].crossedLettersIndexes;
+                    
+                    if (p.X == letterIndex && wordIndex + 1 < labels.Count)
+                    {
+                        Console.WriteLine(wordIndex + " : " + p.X + ", " + p.Y);
+                        labels[wordIndex + 1].getWord()[p.Y].Text = labels[wordIndex].answer[letterIndex].ToString();
+                    }
+                    if (wordIndex - 1 > 0)
+                    {
+                        System.Drawing.Point p2 = labels[wordIndex - 1].crossedLettersIndexes;
+                        if (p2.Y == letterIndex)
+                        {
+                            labels[wordIndex - 1].getWord()[p2.X].Text = labels[wordIndex].answer[letterIndex].ToString();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void WordHint_Click(object sender, RoutedEventArgs e)
+        {
+            if (field.solvedWords < labels.Count)
+            {
+                Random rand = new Random();
+                int wordIndex;
+                do
+                {
+                    wordIndex = rand.Next(0, labels.Count);
+
+                } while (labels[wordIndex].solved);
+                for (int i = 0; i < labels[wordIndex].getWord().Count; i++)
+                {
+                    labels[wordIndex].getWord()[i].Text = labels[wordIndex].answer[i].ToString();
+                }
+            }
+        }
     }
 
-    
+
 
     public class CrossField
     {
-        int xStart = 20;
-        int yStart = 20;
-        int step = 20;
+        int xStart = 60;
+        int yStart = 60;
+        int step = 25;
         List<Word> words = new List<Word>();
         Crossword crossword;
         private int wordCount = 0;
@@ -102,6 +167,7 @@ namespace Client
             public Label rowNumber = new Label();
             public bool solved = false;
             CrossField parent;
+            public System.Drawing.Point crossedLettersIndexes;
 
 
             public List<TextBox> getWord()
@@ -128,6 +194,7 @@ namespace Client
                     tb.Width = CrosswordSolver.cellSize;
                     tb.Height = CrosswordSolver.cellSize;
                     tb.MaxLength = 1;
+                    tb.FontSize = 18;
                     tb.TextAlignment = TextAlignment.Center;
                     tb.VerticalAlignment = VerticalAlignment.Center;
                     tb.TextChanged += TbTextChanged;
@@ -183,7 +250,7 @@ namespace Client
                 {
                     if (word[i].Text != "")
                     {
-                        word[i].Background = new SolidColorBrush(Colors.Green);
+                        word[i].Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#00b831"));
                         word[i].IsReadOnly = true;
                         word[i].Foreground = new SolidColorBrush(Colors.White);
                     }
@@ -212,16 +279,15 @@ namespace Client
                 System.Drawing.Point point = parent.findSameLetterIndexes(parent.words[index], parent.words[index + 1]);
                 parent.words[index + 1].getWord()[point.Y].Text = parent.words[index].getWord()[point.X].Text;
                 parent.words[index + 1].getWord()[point.Y].IsReadOnly = true;
-                parent.words[index + 1].getWord()[point.Y].Background = new SolidColorBrush(Colors.Green);
+                parent.words[index + 1].getWord()[point.Y].Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#00b831"));
             }
 
             private void SetUnderCellValue(int index)
             {
                 System.Drawing.Point point = parent.findSameLetterIndexes(parent.words[index-1], parent.words[index]);
-                Console.WriteLine(point.X + ", " + point.Y);
                 parent.words[index-1].getWord()[point.X].Text = parent.words[index].getWord()[point.Y].Text;
                 parent.words[index-1].getWord()[point.X].IsReadOnly = true;
-                parent.words[index-1].getWord()[point.X].Background = new SolidColorBrush(Colors.Green);
+                parent.words[index-1].getWord()[point.X].Background = (SolidColorBrush)(new BrushConverter().ConvertFrom("#00b831"));
             }
         }
 
@@ -248,7 +314,6 @@ namespace Client
                 words.Add(new Word(qa.Answerk__BackingField, this));
             }
             setPositions();
-            Console.WriteLine("GOOD");
         }
 
         private bool setPositions()
@@ -264,7 +329,8 @@ namespace Client
                 else
                 {
                     System.Drawing.Point p = findSameLetterIndexes(words[i - 1], words[i]);
-                    
+
+                    words[i-1].crossedLettersIndexes = p;
                     if (i % 2 == 1)
                     {
                         setVerticalWordPosition(words[i], p);
@@ -282,12 +348,9 @@ namespace Client
         {
             int x = xStart - p.Y * step;
             int y = yStart + p.X * step;
-            if (p.X == 0 && p.Y == 0)
-            {
-                x += step;
-            }
             xStart = x;
             yStart = y;
+            
             List<TextBox> w = word.getWord();
             word.rowNumber = createRowLabel(x, y);
             for (int i = 0; i < w.Count; i++)
@@ -307,6 +370,7 @@ namespace Client
             rowNum.Foreground = new SolidColorBrush(Colors.Black);
             Canvas.SetLeft(rowNum, x - 30);
             Canvas.SetTop(rowNum, y - 30);
+            
             fieldRow = rowNum;
             rowNum.Background = new SolidColorBrush(Colors.Red);
             return rowNum;
@@ -340,7 +404,6 @@ namespace Client
                 {
                     if(w2[j] == w1[i])
                     {
-                        Console.WriteLine(w1[i]);
                         return new System.Drawing.Point(i, j);
                     }
                 }
@@ -360,4 +423,5 @@ namespace Client
             }
         }
     }
+    
 }

@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
         Title="CrosswordSolver"
-        WindowStyle="None" Height="581.466" Width="767.77"
+        WindowStyle="None" Height="630.066" Width="1014.018"
         ResizeMode="NoResize"
         MouseMove="Window_MouseMove">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ModernButton.xaml"/>
+                <ResourceDictionary Source="CrosswordCell.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -22,29 +23,56 @@
                 <StackPanel Width="100">
                     <Image Margin="20,0" Width="40" Height="40" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Logo2.png" />
                 </StackPanel>
-                <StackPanel Width="632">
+                <StackPanel Width="736">
                     <Label VerticalAlignment="Center" HorizontalAlignment="Left" Content="{Binding Namek__BackingField}"></Label>
                 </StackPanel>
-                <StackPanel  VerticalAlignment="Center">
+                <StackPanel Visibility="Hidden" x:Name="CoinsPanel" Orientation="Horizontal" FlowDirection="RightToLeft" VerticalAlignment="Center" Margin="0,8" Width="124">
+                    <Image Width="22" Height="22" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Coin.png" />
+                    <TextBlock x:Name="CoinsTb" VerticalAlignment="Center" FontSize="18" Foreground="White"></TextBlock>
+                </StackPanel>
+                <StackPanel  VerticalAlignment="Center" Margin="0,10" Width="51">
                     <Button x:Name="CloseBtn" Style="{StaticResource ModernButton}" Width="20" Height="20" Content="X" Click="CloseBtn_Click"></Button>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="540">
-                <StackPanel Width="558">
-                    <ScrollViewer x:Name="scrollView" Height="542" Margin="0,0,-0.6,0">
-                        <Canvas x:Name="CrosswordPanel"  Height="460" Width="450"/>
+            <StackPanel Orientation="Horizontal" Height="589" Margin="0,0,0.4,0">
+                <StackPanel Background="Aquamarine">
+                    <Button x:Name="LetterHint" Width="30" Height="30" Style="{StaticResource ModernButton}" Background="Green" Content="A?" Click="LetterHint_Click">
+                        <Button.ToolTip>
+                            <ToolTip Background="Bisque" BorderThickness="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="-30"></TextBlock>
+                                    <Image Width="15" Height="15" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Coin.png" />
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button x:Name="WordHint" Width="30" Height="30" Style="{StaticResource ModernButton}" Background="Green" Content="W?" Click="WordHint_Click">
+                        <Button.ToolTip>
+                            <ToolTip Background="Bisque" BorderThickness="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="-150"></TextBlock>
+                                    <Image Width="15" Height="15" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Coin.png" />
+                                </StackPanel>
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+                <StackPanel Width="774" Margin="0,0,0,-0.2">
+                    <ScrollViewer x:Name="scrollView" Margin="0,0,-1.6,0" Height="589">
+                        <Canvas Background="LightGray" x:Name="CrosswordPanel"  />
                     </ScrollViewer>
                 </StackPanel>
 
 
                 <StackPanel Width="209" >
-                    <ListBox SelectionChanged="crosswordQuestions_Selected" TextBlock.Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="#FFD8D7E5" x:Name="crosswordQuestions" HorizontalContentAlignment="Stretch" Height="538"  FontSize="14" FontFamily="Segoe UI Semibold" BorderBrush="#FFEAEAEA" Margin="0,0,-0.2,0">
+                    <ListBox SelectionChanged="crosswordQuestions_Selected" TextBlock.Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Background="LightGray" x:Name="crosswordQuestions" HorizontalContentAlignment="Stretch" Height="586"  FontSize="14" FontFamily="Segoe UI Semibold" BorderBrush="#FFEAEAEA" Margin="0,0,-0.2,0">
 
                         <ListBox.ItemTemplate>
                             <DataTemplate>
 
                                 <StackPanel Orientation="Vertical">
-                                    <TextBlock TextWrapping="Wrap" Width="130" Height="Auto" Text="{Binding}" />
+                                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="130" Height="Auto" Text="{Binding}" >
+                                    </TextBlock>
                                 </StackPanel>
 
                             </DataTemplate>
@@ -56,13 +84,16 @@
                                         <Setter Property="CornerRadius" Value="5"/>
                                     </Style>
                                 </Style.Resources>
-
+                                <Setter Property="Background" Value="#0f2885" />
+                                <Setter Property="Foreground" Value="White"></Setter>
                                 <Setter Property="BorderThickness" Value="2" />
                                 <Setter Property="BorderBrush" Value="#FF00D9EE" />
                                 <Setter Property="Margin" Value="0,3,0,0" />
 
                             </Style>
+                            
                         </ListBox.ItemContainerStyle>
+                        
                     </ListBox>
                 </StackPanel>
             </StackPanel>

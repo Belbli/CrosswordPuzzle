@@ -9,7 +9,7 @@ namespace DBService
     [Serializable]
     public class Crossword
     {
-        enum ThemeE { Sport, Animals, Other, Auto, Georaphy, History, Music, Informatic }
+        enum ThemeE { Sport = 1, Animals, Other, Auto, Georaphy, History, Music, Informatic }
         long ID { get; }
         string Name { get; set; }
         string Theme { get; set; }

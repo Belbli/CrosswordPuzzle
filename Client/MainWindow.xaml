@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Client"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Client.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="560" Width="860"
+        Title="MainWindow" Height="571.2" Width="980"
         WindowStartupLocation="CenterScreen" Background="#FF4E3D65"
         WindowStyle="None" ResizeMode="NoResize"
         >
@@ -20,19 +20,23 @@
     </Window.Resources>
     <StackPanel Background="#FF200A3A">
         <StackPanel Height="80" Orientation="Horizontal" Background="#FF02005F">
-            <StackPanel Width="430" >
+            <StackPanel Width="525" >
                 <StackPanel Width="80" Height="80" Margin="30,0,0,0" HorizontalAlignment="Left">
                     <Image Width="80" Height="80" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Logo2.png" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel Width="430" VerticalAlignment="Center" Margin="0,20">
+            <StackPanel Visibility="Hidden" FlowDirection="RightToLeft" HorizontalAlignment="Right" x:Name="CoinsPanel" Orientation="Horizontal" Width="357">
+               <Image Width="25" Height="25" VerticalAlignment="Center" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Coin.png" />
+                <TextBlock x:Name="CoinsTB" FontSize="20" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <StackPanel Width="116" VerticalAlignment="Center" Margin="0,20">
                 <Button Click="menuBtn_Click" Width="40" Height="40" HorizontalContentAlignment="Center" BorderThickness="0" Background="Transparent" x:Name="menuBtn" Margin="0,0,30,0" HorizontalAlignment="Right">
                     <Image Width="30" Height="20" Source="E:\labs\5sem\OSISP\DBService\Client\Images\menu.png" />
                 </Button>
             </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" x:Name="MainSection" HorizontalAlignment="Right" Height="477" Margin="0,0,0,0" VerticalAlignment="Top" Width="860" Background="#FF1B1445">
-            <StackPanel Orientation="Vertical" Margin="60,40,0,-0.2" Width="621">
+        <StackPanel Orientation="Horizontal" x:Name="MainSection" HorizontalAlignment="Right" Height="491" Margin="0,0,0,0" VerticalAlignment="Top" Width="980" Background="#FF1B1445">
+            <StackPanel Orientation="Vertical" Margin="60,40,0,-0.2" Width="710">
                 <StackPanel x:Name="welcomeText" Visibility="Collapsed">
                     <Label Margin="30,0,0,0" Foreground="White" FontSize="30">
                         WELCOME TO THE
@@ -47,8 +51,8 @@
 
 
                 </StackPanel>
-                <StackPanel>
-                    <ListBox Visibility="Collapsed" TextBlock.Foreground="White" Background="#FFD8D7E5" x:Name="crosswordItems" HorizontalContentAlignment="Stretch" Height="390" Margin="0,0,-118.2,0" FontSize="14" FontFamily="Segoe UI Semibold" BorderBrush="#FFEAEAEA">
+                <StackPanel Visibility="Collapsed" x:Name="CrosswordsTable" Orientation="Vertical" Margin="0,0,-150.4,0">
+                    <ListBox TextBlock.Foreground="White" Background="#FFD8D7E5" x:Name="crosswordItems" HorizontalContentAlignment="Stretch" Height="390" FontSize="14" FontFamily="Segoe UI Semibold" BorderBrush="#FFEAEAEA">
                         <ListBox.Template>
                             <ControlTemplate>
                                 <DockPanel LastChildFill="True">
@@ -62,9 +66,7 @@
                                         <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="1" Foreground="White">THEME</Label>
                                         <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="2" Foreground="White">CREATOR</Label>
                                     </Grid>
-                                    <ScrollViewer Width="590" Height="Auto" CanContentScroll="False" Margin="0,0.4">
-                                        <ItemsPresenter/>
-                                    </ScrollViewer>
+                                    <ItemsPresenter/>
                                 </DockPanel>
                             </ControlTemplate>
                         </ListBox.Template>
@@ -97,7 +99,7 @@
                                 <Setter Property="Background" Value="#FF4323A8" />
                                 <Setter Property="Opacity" Value="0.8" />
 
-                                <Setter Property="Height" Value="60" />
+                                <Setter Property="Height" Value="50" />
                                 <Setter Property="BorderThickness" Value="2" />
                                 <Setter Property="BorderBrush" Value="#FF00D9EE" />
                                 <Setter Property="Margin" Value="0,3,0,0" />
@@ -106,15 +108,19 @@
                         </ListBox.ItemContainerStyle>
 
                     </ListBox>
+                    <StackPanel Margin="0, 15, 0, 0" x:Name="PaginationPanel" Orientation="Horizontal" HorizontalAlignment="Center">
+
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="Menu" Width="180" HorizontalAlignment="Right" Height="477" Background="#FF2B055F">
+            <StackPanel  x:Name="Menu" Width="210" HorizontalAlignment="Right" Background="#FF2B055F" Margin="0,0,0,0.2">
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="accountBtn" Height="30" Margin="0 45 0 0" Content="Log In" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="accountBtn_Click" />
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="crosswordsBtn" Height="30" Content="Crosswords" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="crosswordsBtn_Click" />
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="createBtn" Height="30" Content="Create Crossword" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="createBtn_Click" />
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="logOutBtn" Visibility="Hidden" Content="Log Out" Height="30" Foreground="White" FontFamily="DengXian" FontSize="16" Click="logOutBtn_Click"></Button>
+                
                 <Button Style="{StaticResource MainWindowBtn}" x:Name="exitBtn" HorizontalContentAlignment="Right" Padding="0,0,30,0" Height="30" Margin="0,220,0,0" Content="Exit" OpacityMask="#FFC83E3E" Foreground="White" FontFamily="DengXian" FontSize="16" BorderBrush="#FFB4B4B4" Click="exitBtn_Click" />
-
+                
             </StackPanel>
         </StackPanel>
 

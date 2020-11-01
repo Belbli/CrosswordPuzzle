@@ -22,6 +22,8 @@ namespace Client.ClientService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        private int Coinsk__BackingFieldField;
+        
         private long IDk__BackingFieldField;
         
         private string Logink__BackingFieldField;
@@ -35,6 +37,19 @@ namespace Client.ClientService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Coins>k__BackingField", IsRequired=true)]
+        public int Coinsk__BackingField {
+            get {
+                return this.Coinsk__BackingFieldField;
+            }
+            set {
+                if ((this.Coinsk__BackingFieldField.Equals(value) != true)) {
+                    this.Coinsk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Coinsk__BackingField");
+                }
             }
         }
         
@@ -225,28 +240,28 @@ namespace Client.ClientService {
         public enum ThemeE : int {
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Sport = 0,
+            Sport = 1,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Animals = 1,
+            Animals = 2,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Other = 2,
+            Other = 3,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Auto = 3,
+            Auto = 4,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Georaphy = 4,
+            Georaphy = 5,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            History = 5,
+            History = 6,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Music = 6,
+            Music = 7,
             
             [System.Runtime.Serialization.EnumMemberAttribute()]
-            Informatic = 7,
+            Informatic = 8,
         }
     }
     
@@ -362,10 +377,10 @@ namespace Client.ClientService {
         System.Threading.Tasks.Task<string[]> getThemesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getUserCrosswords", ReplyAction="http://tempuri.org/IDBConnection/getUserCrosswordsResponse")]
-        Client.ClientService.Crossword[] getUserCrosswords(int id);
+        Client.ClientService.Crossword[] getUserCrosswords(int id, int offset, int length);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getUserCrosswords", ReplyAction="http://tempuri.org/IDBConnection/getUserCrosswordsResponse")]
-        System.Threading.Tasks.Task<Client.ClientService.Crossword[]> getUserCrosswordsAsync(int id);
+        System.Threading.Tasks.Task<Client.ClientService.Crossword[]> getUserCrosswordsAsync(int id, int offset, int length);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/insertQuestions", ReplyAction="http://tempuri.org/IDBConnection/insertQuestionsResponse")]
         int insertQuestions(Client.ClientService.QuestionAnswer[] items, int owner_id);
@@ -378,6 +393,12 @@ namespace Client.ClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getCrosswordQuestions", ReplyAction="http://tempuri.org/IDBConnection/getCrosswordQuestionsResponse")]
         System.Threading.Tasks.Task<Client.ClientService.QuestionAnswer[]> getCrosswordQuestionsAsync(int crosswirdID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveUsersCoins", ReplyAction="http://tempuri.org/IDBConnection/saveUsersCoinsResponse")]
+        void saveUsersCoins(long userId, int coins);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveUsersCoins", ReplyAction="http://tempuri.org/IDBConnection/saveUsersCoinsResponse")]
+        System.Threading.Tasks.Task saveUsersCoinsAsync(long userId, int coins);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -471,12 +492,12 @@ namespace Client.ClientService {
             return base.Channel.getThemesAsync();
         }
         
-        public Client.ClientService.Crossword[] getUserCrosswords(int id) {
-            return base.Channel.getUserCrosswords(id);
+        public Client.ClientService.Crossword[] getUserCrosswords(int id, int offset, int length) {
+            return base.Channel.getUserCrosswords(id, offset, length);
         }
         
-        public System.Threading.Tasks.Task<Client.ClientService.Crossword[]> getUserCrosswordsAsync(int id) {
-            return base.Channel.getUserCrosswordsAsync(id);
+        public System.Threading.Tasks.Task<Client.ClientService.Crossword[]> getUserCrosswordsAsync(int id, int offset, int length) {
+            return base.Channel.getUserCrosswordsAsync(id, offset, length);
         }
         
         public int insertQuestions(Client.ClientService.QuestionAnswer[] items, int owner_id) {
@@ -493,6 +514,14 @@ namespace Client.ClientService {
         
         public System.Threading.Tasks.Task<Client.ClientService.QuestionAnswer[]> getCrosswordQuestionsAsync(int crosswirdID) {
             return base.Channel.getCrosswordQuestionsAsync(crosswirdID);
+        }
+        
+        public void saveUsersCoins(long userId, int coins) {
+            base.Channel.saveUsersCoins(userId, coins);
+        }
+        
+        public System.Threading.Tasks.Task saveUsersCoinsAsync(long userId, int coins) {
+            return base.Channel.saveUsersCoinsAsync(userId, coins);
         }
     }
 }

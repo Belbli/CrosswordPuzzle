@@ -103,6 +103,12 @@
   <wsdl:message name="IDBConnection_getCrosswordQuestions_OutputMessage">
     <wsdl:part name="parameters" element="tns:getCrosswordQuestionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDBConnection_saveUsersCoins_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveUsersCoins" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_saveUsersCoins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveUsersCoinsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDBConnection">
     <wsdl:operation name="GetSum">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetSum" message="tns:IDBConnection_GetSum_InputMessage" />
@@ -147,6 +153,10 @@
     <wsdl:operation name="getCrosswordQuestions">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordQuestions" message="tns:IDBConnection_getCrosswordQuestions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordQuestionsResponse" message="tns:IDBConnection_getCrosswordQuestions_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveUsersCoins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/saveUsersCoins" message="tns:IDBConnection_saveUsersCoins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/saveUsersCoinsResponse" message="tns:IDBConnection_saveUsersCoins_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDBConnection" type="tns:IDBConnection">
@@ -250,6 +260,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="saveUsersCoins">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/saveUsersCoins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IDBConnection" type="tns:IDBConnection">
     <wsp:PolicyReference URI="#NetTcpBinding_IDBConnection_policy" />
@@ -346,6 +365,15 @@
     </wsdl:operation>
     <wsdl:operation name="getCrosswordQuestions">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/getCrosswordQuestions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveUsersCoins">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/saveUsersCoins" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

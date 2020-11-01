@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Client"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="Client.CreateCrosswordModal"
         mc:Ignorable="d"
-        Title="CreateCrosswordModal" Height="409.728" Width="598.047"
+        Title="CreateCrosswordModal" Height="409.728" Width="696.447"
         WindowStyle="None" ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
@@ -17,17 +17,17 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <StackPanel Background="#FF2D2563">
+        <StackPanel  Background="#FF2D2563">
             <StackPanel  Background="#FF210069" Orientation="Horizontal">
-                <StackPanel>
-                    <Label Foreground="White" FontSize="17" Content="Create Crossword" Width="572"/>
+                <StackPanel Width="666">
+                    <Label Foreground="White" FontSize="17" Content="Create Crossword" Margin="10,0,46.6,0"/>
                 </StackPanel>
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Button Style="{StaticResource ModernButton}" Click="CloseModalBtn_Click" Width="15" Height="15" Content="X"></Button>
                 </StackPanel>
                 </StackPanel>
             <StackPanel Height="50" Orientation="Horizontal">
-                <StackPanel Height="70" VerticalAlignment="Top">
+                <StackPanel Height="70" VerticalAlignment="Top" Margin="0,0,0,-20.4">
                     <TextBox Margin="30, 20, 0, 0" FontFamily="Helvetica"
 						FontWeight="Light"
 						Text="Crossword Name"
@@ -46,7 +46,7 @@
 						Background="White"
 						Opacity="0.5"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Height="70" VerticalAlignment="Top" >
+                <StackPanel Orientation="Horizontal" Height="70" VerticalAlignment="Top" Margin="0,0,0,-20.4" Width="258" >
                     <StackPanel>
                         <Label Foreground="White" FontSize="12" Margin="30, 20, 0, 0" Content="Select Theme"/>
                     </StackPanel>
@@ -55,12 +55,12 @@
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0,0,101.2,0">
                 <StackPanel Width="350">
                     <Label Margin="30,0,0,0" Foreground="White">Question</Label>
                     <TextBox x:Name="questionBox" Margin="30,0,0,0"></TextBox>
                 </StackPanel>
-                <StackPanel Width="150">
+                <StackPanel Width="172">
                     <Label Margin="30,0,0,0" Foreground="White">Answer</Label>
                     <TextBox x:Name="answerBox" Margin="25,0,0,0"></TextBox>
                 </StackPanel>
@@ -69,12 +69,12 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" Height="284" Margin="0,0,0.4,0">
-                <StackPanel Margin="31,0,31.4,-0.2">
-                    <ListBox SelectionChanged="SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="214" x:Name="questionsLB" BorderBrush="White" FontSize="16" >
+                <StackPanel Orientation="Horizontal" Margin="31,0,0.2,-0.2">
+                    <ListBox SelectionChanged="SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="211" x:Name="questionsLB" BorderBrush="White" FontSize="16" >
                         <ListBox.Template>
                             <ControlTemplate>
                                 <DockPanel LastChildFill="True">
-                                    <Grid DockPanel.Dock="Top" Height="50">
+                                    <Grid DockPanel.Dock="Top" Height="30">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="350" />
                                             <ColumnDefinition Width="120" />
@@ -113,6 +113,54 @@
                                 
                                 <Setter Property="VerticalContentAlignment" Value="Center" />
                                 <Setter Property="Background" Value="#FF4323A8" />
+                                <Setter Property="Opacity" Value="0.8" />
+
+                                <Setter Property="Height" Value="30" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="BorderBrush" Value="#FF00D9EE" />
+                                <Setter Property="Margin" Value="0,3,0,0" />
+
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                    <ListBox Height="214" x:Name="ReserveWordsLB" Width="175">
+                        <ListBox.Template>
+                            <ControlTemplate>
+                                <DockPanel LastChildFill="True">
+                                    <Grid DockPanel.Dock="Top" Height="30">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label HorizontalAlignment="Left" FontSize="18" Grid.Column="0" Foreground="White" Content="Reserve Words"/>
+                                       </Grid>
+
+                                    <ScrollViewer Height="180" Width="173">
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
+                                </DockPanel>
+                            </ControlTemplate>
+                        </ListBox.Template>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Foreground="White" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0" Text="{Binding Answerk__BackingField}" />
+                                  </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Style.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Style.Resources>
+
+                                <Setter Property="VerticalContentAlignment" Value="Center" />
+                                <Setter Property="Background" Value="#E35353" />
                                 <Setter Property="Opacity" Value="0.8" />
 
                                 <Setter Property="Height" Value="30" />

@@ -36,12 +36,15 @@ namespace DBService
         List<string> getThemes();
 
         [OperationContract]
-        List<Crossword> getUserCrosswords(int id);
+        List<Crossword> getUserCrosswords(int id, int offset, int length);
 
         [OperationContract]
         int insertQuestions(List<QuestionAnswer> items, int owner_id);
 
         [OperationContract]
         List<QuestionAnswer> getCrosswordQuestions(int crosswirdID);
+
+        [OperationContract]
+        void saveUsersCoins(long userId, int coins);
     }
 }

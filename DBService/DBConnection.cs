@@ -114,9 +114,9 @@ namespace DBService
                         {
                             long id = rdr.GetInt32(0);
                             string name = rdr.GetString(1);
-
+                            int coins = rdr.GetInt32(2);
                             if (name != null)
-                                user = new User(id, name, login);
+                                user = new User(id, name, login, coins);
                         }
                     }
                 }
@@ -135,7 +135,7 @@ namespace DBService
                                             cw.GetName(),
                                             cw.GetTheme(),
                                             cw.GetOwnerID());
-
+                Console.WriteLine(sql);
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
                     using (NpgsqlDataReader rdr = cmd.ExecuteReader())
@@ -194,14 +194,14 @@ namespace DBService
             return insertedItems;
         }
 
-        public List<Crossword> getUserCrosswords(int id)
+        public List<Crossword> getUserCrosswords(int id, int offset, int length)
         {
             List<Crossword> crosswords = new List<Crossword>();
             using (var con = new NpgsqlConnection(connStr))
             {
                 con.Open();
 
-                var sql = String.Format("select * from get_user_crosswords({0})", id);
+                var sql = String.Format("select * from get_user_crosswords({0}, {1}, {2})", id, offset, length);
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -225,7 +225,7 @@ namespace DBService
             {
                 con.Open();
 
-                var sql = "select * from select_crosswords()";
+                var sql = String.Format("select * from select_crosswords({0}, {1})", offset, count);
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -243,6 +243,21 @@ namespace DBService
                 }
             }
             return crosswords;
+        }
+
+        public void saveUsersCoins(long userId, int coins)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+                var sql = String.Format("UPDATE users_data SET user_coins = {0} WHERE user_id = {1}", coins, userId);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                    }
+                }
+            }
         }
 
         public List<QuestionAnswer> getCrosswordQuestions(int crosswirdID)

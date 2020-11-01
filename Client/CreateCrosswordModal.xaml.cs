@@ -12,8 +12,9 @@ namespace Client
     /// </summary>
     public partial class CreateCrosswordModal : Window
     {
-        DBConnectionClient client;
-        ObservableCollection<QuestionAnswer> list = new ObservableCollection<QuestionAnswer>();
+       
+        ObservableCollection<QuestionAnswer> questionsAnsrews = new ObservableCollection<QuestionAnswer>();
+        ObservableCollection<QuestionAnswer> reserveWords = new ObservableCollection<QuestionAnswer>();
         User creator;
         string prevWord = "";
 
@@ -21,20 +22,33 @@ namespace Client
         {
             InitializeComponent();
             creator = user;
-            client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
+            DBConnectionClient client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
             CrosswordThemes.ItemsSource = client.getThemes();
-            questionsLB.ItemsSource = list;
+            questionsLB.ItemsSource = questionsAnsrews;
+            ReserveWordsLB.ItemsSource = reserveWords;
+
+            client.Close();
         }
 
         private void AddRow(object sender, RoutedEventArgs e)
         {
             bool correct = checkWordToInsert(answerBox.Text);
+            if(answerBox.Text == "")
+            {
+                return;
+            }
             if(!correct)
             {
+                reserveWords.Add(new QuestionAnswer()
+                {
+                    Answerk__BackingField = answerBox.Text,
+                    Questionk__BackingField = questionBox.Text
+                });
                 MessageBox.Show("Current word is baad(");
             }
             if (correct)
             {
+                
                 QuestionAnswer qa = new QuestionAnswer();
                 qa.Answerk__BackingField = answerBox.Text;
                 qa.Questionk__BackingField = questionBox.Text;
@@ -43,12 +57,12 @@ namespace Client
                 {
                     if (questionsLB.SelectedIndex > -1)
                     {
-                        list[questionsLB.SelectedIndex] = qa;
+                        questionsAnsrews[questionsLB.SelectedIndex] = qa;
                         questionsLB.SelectedIndex = -1;
                     }
                     else
                     {
-                        list.Add(qa);
+                        questionsAnsrews.Add(qa);
                     }
                     questionBox.Text = "";
                     answerBox.Text = "";
@@ -57,8 +71,16 @@ namespace Client
                 {
                     MessageBox.Show("Question or answer field is empty");
                 }
+                for (int i = 0; i < reserveWords.Count; i++)
+                {
+                    if (checkWordToInsert(reserveWords[i].Answerk__BackingField))
+                    {
+                        questionsAnsrews.Add(reserveWords[i]);
+                        prevWord = reserveWords[i].Answerk__BackingField;
+                        reserveWords.Remove(reserveWords[i]);
+                    }
+                }
             }
-            
         }
 
         private bool checkWordToInsert(string text)
@@ -135,7 +157,7 @@ namespace Client
         {
             Crossword cw = new Crossword();
             cw.Namek__BackingField = CrosswordName.Text;
-            cw.theme = (Crossword.ThemeE)CrosswordThemes.SelectedIndex;
+            cw.theme = (Crossword.ThemeE)CrosswordThemes.SelectedIndex + 1;
             cw.OwnerIDk__BackingField = creator.IDk__BackingField;
             QuestionAnswer[] qa = convertToArray(questionsLB.Items);
             cw.questionsk__BackingField = qa;
@@ -143,10 +165,12 @@ namespace Client
         }
 
         private void saveCrossword(Crossword cw)
-        {            
+        {
+            DBConnectionClient client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
             int index = client.createCrossword(cw);
             int insertedItems = client.insertQuestions(cw.questionsk__BackingField, index);
             MessageBox.Show(index.ToString());
+            client.Close();
         }
 
         private QuestionAnswer[] convertToArray(ItemCollection items)
