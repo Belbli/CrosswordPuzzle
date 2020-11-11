@@ -168,6 +168,7 @@ namespace Client
             cw.Namek__BackingField = CrosswordName.Text;
             cw.theme = (Crossword.ThemeE)CrosswordThemes.SelectedIndex + 1;
             cw.OwnerIDk__BackingField = creator.IDk__BackingField;
+            cw.Rathingk__BackingField = 0;
             QuestionAnswer[] qa = convertToArray(questionsLB.Items);
             cw.questionsk__BackingField = qa;
             return cw;

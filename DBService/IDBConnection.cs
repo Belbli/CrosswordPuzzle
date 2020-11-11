@@ -58,5 +58,11 @@ namespace DBService
 
         [OperationContract]
         int countCrosswords();
+
+        [OperationContract]
+        int countFoundedCrosswords(string crosswodName);
+
+        [OperationContract]
+        void saveCoins(long uid, int coins);
     }
 }

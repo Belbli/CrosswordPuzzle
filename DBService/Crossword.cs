@@ -14,10 +14,12 @@ namespace DBService
         string Name { get; set; }
         string Theme { get; set; }
 
+        double Rathing { get; set; }
+
         List<QuestionAnswer> questions { get; set; }
 
         ThemeE theme;
-
+        
         string OwnerLogin { get; set; }
 
         long OwnerID { get; set; }
@@ -37,21 +39,25 @@ namespace DBService
             return OwnerID;
         }
 
-        public Crossword(long id, string name, int themeIndx)
+        public Crossword(long id, string name, int themeIndx, double rathing)
         {
             ID = id;
+        
             Name = name;
             theme = (ThemeE)themeIndx;
             Theme = theme.ToString("g");
+
+            Rathing = rathing;
         }
 
-        public Crossword(long id, string name, int themeIndx, string owner)
+        public Crossword(long id, string name, int themeIndx, string owner, double rathing)
         {
             ID = id;
             Name = name;
             theme = (ThemeE)themeIndx;
             Theme = theme.ToString("g");
             OwnerLogin = owner;
+            Rathing = rathing;
         }
 
         public Crossword(string name, int themeIndx, int ownerID)

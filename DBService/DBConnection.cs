@@ -124,6 +124,24 @@ namespace DBService
             return user;
         }
 
+        public void saveCoins(long uid, int coins)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("UPDATE users_data SET user_coins = " + coins + "where user_id = " + uid);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        
+                    }
+                }
+            }
+        }
+
         public int createCrossword(Crossword cw)
         {
             int crosswordID = -1;
@@ -193,6 +211,7 @@ namespace DBService
             }
             return insertedItems;
         }
+       
 
         public List<Crossword> getUserCrosswords(int id, int offset, int length)
         {
@@ -201,7 +220,7 @@ namespace DBService
             {
                 con.Open();
 
-                var sql = String.Format("select * from get_user_crosswords({0}, {1}, {2})", id, offset, length);
+                var sql = String.Format("select * from find_user_crosswords({0}, {1}, {2})", id, offset, length);
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -209,7 +228,7 @@ namespace DBService
                     {
                         while (rdr.Read())
                         {
-                            Crossword cr = new Crossword(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2));
+                            Crossword cr = new Crossword(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetDouble(3));
                             crosswords.Add(cr);
                         }
                     }
@@ -225,7 +244,7 @@ namespace DBService
             {
                 con.Open();
 
-                var sql = String.Format("select * from select_crosswords({0}, {1})", offset, count);
+                var sql = String.Format("select * from find_crosswords({0}, {1})", offset, count);
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -237,7 +256,8 @@ namespace DBService
                             string name = rdr.GetString(1);
                             int theme = rdr.GetInt32(2);
                             string owner = rdr.GetString(3);
-                            crosswords.Add(new Crossword(id, name, theme, owner));
+                            double rathing = rdr.GetDouble(4);
+                            crosswords.Add(new Crossword(id, name, theme, owner, rathing));
                         }
                     }
                 }
@@ -291,7 +311,7 @@ namespace DBService
             {
                 con.Open();
 
-                var sql = String.Format("select * from select_crosswords({0}, {1}, {2})", offset, count, themeId);
+                var sql = String.Format("select * from find_crosswords({0}, {1}, {2})", offset, count, themeId);
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -303,7 +323,8 @@ namespace DBService
                             string name = rdr.GetString(1);
                             int theme = rdr.GetInt32(2);
                             string owner = rdr.GetString(3);
-                            crosswords.Add(new Crossword(id, name, theme, owner));
+                            float rathing = rdr.GetFloat(4);
+                            crosswords.Add(new Crossword(id, name, theme, owner, rathing));
                         }
                     }
                 }
@@ -326,7 +347,7 @@ namespace DBService
                     {
                         while (rdr.Read())
                         {
-                            Crossword cr = new Crossword(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2));
+                            Crossword cr = new Crossword(rdr.GetInt32(0), rdr.GetString(1), rdr.GetInt32(2), rdr.GetFloat(3));
                             crosswords.Add(cr);
                         }
                     }
@@ -342,7 +363,7 @@ namespace DBService
             {
                 con.Open();
 
-                var sql = String.Format("select * from find_crossword({0}, {1}, '{2}')", offset, count, crosswordName);
+                var sql = String.Format("select * from find_crosswords_by_name({0}, {1}, '{2}%')", offset, count, crosswordName);
                 Console.WriteLine(sql);
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -354,8 +375,9 @@ namespace DBService
                             string name = rdr.GetString(1);
                             int theme = rdr.GetInt32(2);
                             string owner = rdr.GetString(3);
+                            double rathing = rdr.GetDouble(4);
                             Console.WriteLine(id);
-                            crosswords.Add(new Crossword(id, name, theme, owner));
+                            crosswords.Add(new Crossword(id, name, theme, owner, rathing));
                         }
                     }
                 }
@@ -371,6 +393,27 @@ namespace DBService
                 con.Open();
 
                 var sql = "SELECT COUNT(*) from crosswords";
+
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        rdr.Read();
+                        return rdr.GetInt32(0);
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public int countFoundedCrosswords(string crosswodName)
+        {
+            List<Crossword> crosswords = new List<Crossword>();
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                var sql = "SELECT COUNT(*) from crosswords where LOWER(crossword_name) LIKE LOWER('" + crosswodName + "%')";
 
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {

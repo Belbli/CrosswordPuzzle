@@ -19,6 +19,7 @@ namespace Client
         public User user;
         ObservableCollection<Crossword> items = new ObservableCollection<Crossword>();
         public delegate void DialogDelegate(User user);
+        public delegate void SetCoinsDelegate(int coins);
         List<Button> pagination = new List<Button>();
         int currentPage = 1;
         int maxPage;
@@ -31,7 +32,22 @@ namespace Client
             client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
             InitializeComponent();
             welcomeText.Visibility = Visibility.Visible;
-                    
+            setFilterBoxItems();
+        }
+
+        public void setFilterBoxItems()
+        {
+            string[] themes = client.getThemes();
+            for (int i = 0; i < themes.Length; i++)
+                FilterBox.Children.Add(createCheckBox(themes[i]));
+        }
+
+        private RadioButton createCheckBox(string filterItemName)
+        {
+            RadioButton cb = new RadioButton();
+            cb.Content = filterItemName;
+            cb.Foreground = new SolidColorBrush(Colors.White);
+            return cb;
         }
 
         private void paginationBtnClick(object sender, RoutedEventArgs e)
@@ -137,6 +153,11 @@ namespace Client
             }
         }
 
+        public void SetCoins(int coins)
+        {
+            CoinsTB.Text = coins.ToString();
+        }
+
         private void button3_Click(object sender, RoutedEventArgs e)
         {
             ModalWindow mw = new ModalWindow();
@@ -158,6 +179,8 @@ namespace Client
         }
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(user != null)
+                client.saveCoins(user.IDk__BackingField, user.Coinsk__BackingField);
             Close();
             client.Close();
         }
@@ -234,6 +257,7 @@ namespace Client
 
         private void logOutBtn_Click(object sender, RoutedEventArgs e)
         {
+            client.saveCoins(user.IDk__BackingField, user.Coinsk__BackingField);
             logOutBtn.Visibility = Visibility.Hidden;
             CoinsPanel.Visibility = Visibility.Hidden;
             user = null;
@@ -249,19 +273,37 @@ namespace Client
         {
             Crossword cw = (sender as Button)?.DataContext as Crossword;
             cw.questionsk__BackingField = client.getCrosswordQuestions((int)cw.IDk__BackingField);
-            CrosswordSolver cs = new CrosswordSolver(cw, user);
+            CrosswordSolver cs = new CrosswordSolver(cw, user, new SetCoinsDelegate(SetCoins));
             cs.Visibility = Visibility.Visible;
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-            items = new ObservableCollection<Crossword>(client.findCrosswords((currentPage-1)* pageElementsCount,
-                                                                                               pageElementsCount,
-                                                                                               SearchBox.Text));
-            crosswordsWindow = CrosswordsWindow.SEARCH_CROSSWORDS;
-            crosswordItems.ItemsSource = items;
-            currentPage = 1;
-            createPagination();
+            if(SearchBox.Text == "")
+            {
+                maxPage = client.countCrosswords() / pageElementsCount + 1;
+                currentPage = 1;
+                items = new ObservableCollection<Crossword>(client.getCrosswords((currentPage - 1) * pageElementsCount, pageElementsCount));
+                crosswordsWindow = CrosswordsWindow.ALL_CROSSWORDS;
+                CrosswordsTable.Visibility = Visibility.Visible;
+                crosswordItems.ItemsSource = items;
+
+                createPagination();
+            }
+            else
+            {
+                maxPage = client.countFoundedCrosswords(SearchBox.Text);
+                items = new ObservableCollection<Crossword>(client.findCrosswords((currentPage - 1) * pageElementsCount,
+                                                                                                   pageElementsCount,
+                                                                                                   SearchBox.Text));
+                welcomeText.Visibility = Visibility.Collapsed;
+                CrosswordsTable.Visibility = Visibility.Visible;
+                createPagination();
+                crosswordsWindow = CrosswordsWindow.SEARCH_CROSSWORDS;
+                crosswordItems.ItemsSource = items;
+                currentPage = 1;
+                createPagination();
+            }
         }
     }
 }

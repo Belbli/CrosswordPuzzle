@@ -36,17 +36,15 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" x:Name="MainSection" HorizontalAlignment="Right" Height="491" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="1074" Background="#FF1B1445">
-            <StackPanel Margin="0,0,0,0.2" Width="107">
-                <TextBox>FILTER</TextBox>
+            <StackPanel x:Name="FilterBox" Margin="0,0,0,0.2" Width="107">
+                
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="60,0,0,0.2" Width="699">
-                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <TextBox x:Name="SearchBox" Width="300">
-
-                    </TextBox>
-                    <Button x:Name="SearchBtn" Click="SearchBtn_Click">Find</Button>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,187.2,0" Width="512">
+                    <TextBox x:Name="SearchBox" Width="300"/>
+                    <Button x:Name="SearchBtn" Click="SearchBtn_Click" Content="Find"/>
                 </StackPanel>
-                
+
                 <StackPanel x:Name="welcomeText" Visibility="Collapsed">
                     <Label Margin="30,0,0,0" Foreground="White" FontSize="30">
                         WELCOME TO THE
@@ -70,11 +68,13 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="70" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="0" Foreground="White">NAME</Label>
                                         <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="1" Foreground="White">THEME</Label>
-                                        <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="2" Foreground="White">CREATOR</Label>
+                                        <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="2" Foreground="White">RATE</Label>
+                                        <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="3" Foreground="White">CREATOR</Label>
                                     </Grid>
                                     <ItemsPresenter/>
                                 </DockPanel>
@@ -86,6 +86,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50" />
                                         <ColumnDefinition Width="*" />
                                     </Grid.ColumnDefinitions>
 
@@ -93,8 +94,11 @@
                                     <GridSplitter Width="2" Grid.Column="0"/>
                                     <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Text="{Binding Themek__BackingField}" />
                                     <GridSplitter Width="2" Grid.Column="1" />
-                                    <TextBlock x:Name="CreatorHeader" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding OwnerLogink__BackingField}" />
-                                    <Button x:Name="SolveBtn" VerticalAlignment="Center" Grid.Column="2" Style="{StaticResource ModernButton}" TextBlock.FontSize="12" Width="60" Height="30" HorizontalAlignment="Right" Click="SolveBtn_Click" Content="Solve!"></Button>
+                                    <TextBlock x:Name="CreatorHeader" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Text="{Binding OwnerLogink__BackingField}" />
+                                    <Button x:Name="SolveBtn" VerticalAlignment="Center" Grid.Column="3" Style="{StaticResource ModernButton}" TextBlock.FontSize="12" Width="60" Height="30" HorizontalAlignment="Right" Click="SolveBtn_Click" Content="Solve!"></Button>
+                                    <GridSplitter Width="2" Grid.Column="2" />
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Text="{Binding Rathingk__BackingField}" />
+
                                 </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

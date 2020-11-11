@@ -235,4 +235,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="countFoundedCrosswords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="crosswodName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countFoundedCrosswordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="countFoundedCrosswordsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveCoins">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="uid" type="xs:long" />
+        <xs:element minOccurs="0" name="coins" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="saveCoinsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

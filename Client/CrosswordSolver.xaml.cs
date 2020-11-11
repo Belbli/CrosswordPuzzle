@@ -18,13 +18,15 @@ namespace Client
         int selectedRow = -1;
         public static ListBox lb;
         CrossField field;
-        User user;
+        public User user;
+        public MainWindow.SetCoinsDelegate setCoinsDelegate;
 
         public static int cellSize = 25;
 
-        public CrosswordSolver(Crossword cw, User user)
+        public CrosswordSolver(Crossword cw, User user, MainWindow.SetCoinsDelegate setCoinsDelegate)
         {
-            field = new CrossField(cw);
+            field = new CrossField(cw, this);
+            this.setCoinsDelegate = setCoinsDelegate;
             this.user = user;
             field.createCrossFields();
            
@@ -59,6 +61,11 @@ namespace Client
             {
                 DragMove();
             }
+        }
+
+        public void SetCoins(int coins)
+        {
+            CoinsTb.Text = coins.ToString();
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -158,10 +165,17 @@ namespace Client
         private int wordCount = 0;
         Label fieldRow;
         public int solvedWords = 0;
+        CrosswordSolver parent;
 
+        public CrossField(Crossword cw, CrosswordSolver solver)
+        {
+            crossword = cw;
+            parent = solver;
+        }
 
         public class Word
         {
+            
             List<TextBox> word = new List<TextBox>();
             public string answer;
             public Label rowNumber = new Label();
@@ -212,6 +226,13 @@ namespace Client
                 if (answer == s)
                 {
                     solved = true;
+                    
+                    if(parent.parent.user != null)
+                    {
+                        parent.parent.user.Coinsk__BackingField += answer.Length * 20;
+                        parent.parent.setCoinsDelegate(parent.parent.user.Coinsk__BackingField);
+                        parent.parent.SetCoins(parent.parent.user.Coinsk__BackingField);
+                    }
                     parent.solvedWords++;
                     MarkCorrectAnswer();
                     int index = FindCorrectWordIndex();
@@ -292,10 +313,6 @@ namespace Client
         }
 
 
-        public CrossField (Crossword cw)
-        {
-            crossword = cw;
-        }
 
         public List<Word> getWords()
         {

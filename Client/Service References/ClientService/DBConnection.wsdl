@@ -133,6 +133,18 @@
   <wsdl:message name="IDBConnection_countCrosswords_OutputMessage">
     <wsdl:part name="parameters" element="tns:countCrosswordsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDBConnection_countFoundedCrosswords_InputMessage">
+    <wsdl:part name="parameters" element="tns:countFoundedCrosswords" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_countFoundedCrosswords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:countFoundedCrosswordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_saveCoins_InputMessage">
+    <wsdl:part name="parameters" element="tns:saveCoins" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_saveCoins_OutputMessage">
+    <wsdl:part name="parameters" element="tns:saveCoinsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDBConnection">
     <wsdl:operation name="GetSum">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetSum" message="tns:IDBConnection_GetSum_InputMessage" />
@@ -197,6 +209,14 @@
     <wsdl:operation name="countCrosswords">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/countCrosswords" message="tns:IDBConnection_countCrosswords_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/countCrosswordsResponse" message="tns:IDBConnection_countCrosswords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="countFoundedCrosswords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/countFoundedCrosswords" message="tns:IDBConnection_countFoundedCrosswords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/countFoundedCrosswordsResponse" message="tns:IDBConnection_countFoundedCrosswords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="saveCoins">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/saveCoins" message="tns:IDBConnection_saveCoins_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/saveCoinsResponse" message="tns:IDBConnection_saveCoins_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDBConnection" type="tns:IDBConnection">
@@ -345,6 +365,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="countFoundedCrosswords">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/countFoundedCrosswords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCoins">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/saveCoins" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IDBConnection" type="tns:IDBConnection">
     <wsp:PolicyReference URI="#NetTcpBinding_IDBConnection_policy" />
@@ -486,6 +524,24 @@
     </wsdl:operation>
     <wsdl:operation name="countCrosswords">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/countCrosswords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="countFoundedCrosswords">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/countFoundedCrosswords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveCoins">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/saveCoins" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

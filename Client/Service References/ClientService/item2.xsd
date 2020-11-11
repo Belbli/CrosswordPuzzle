@@ -22,6 +22,7 @@
       <xs:element name="_x003C_Name_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_OwnerID_x003E_k__BackingField" type="xs:long" />
       <xs:element name="_x003C_OwnerLogin_x003E_k__BackingField" nillable="true" type="xs:string" />
+      <xs:element name="_x003C_Rathing_x003E_k__BackingField" type="xs:double" />
       <xs:element name="_x003C_Theme_x003E_k__BackingField" nillable="true" type="xs:string" />
       <xs:element name="_x003C_questions_x003E_k__BackingField" nillable="true" type="tns:ArrayOfQuestionAnswer" />
       <xs:element name="theme" type="tns:Crossword.ThemeE" />

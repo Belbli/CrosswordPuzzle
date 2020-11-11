@@ -119,6 +119,8 @@ namespace Client.ClientService {
         
         private string OwnerLogink__BackingFieldField;
         
+        private double Rathingk__BackingFieldField;
+        
         private string Themek__BackingFieldField;
         
         private Client.ClientService.QuestionAnswer[] questionsk__BackingFieldField;
@@ -183,6 +185,19 @@ namespace Client.ClientService {
                 if ((object.ReferenceEquals(this.OwnerLogink__BackingFieldField, value) != true)) {
                     this.OwnerLogink__BackingFieldField = value;
                     this.RaisePropertyChanged("OwnerLogink__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Rathing>k__BackingField", IsRequired=true)]
+        public double Rathingk__BackingField {
+            get {
+                return this.Rathingk__BackingFieldField;
+            }
+            set {
+                if ((this.Rathingk__BackingFieldField.Equals(value) != true)) {
+                    this.Rathingk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Rathingk__BackingField");
                 }
             }
         }
@@ -423,6 +438,18 @@ namespace Client.ClientService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countCrosswordsResponse")]
         System.Threading.Tasks.Task<int> countCrosswordsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countFoundedCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countFoundedCrosswordsResponse")]
+        int countFoundedCrosswords(string crosswodName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countFoundedCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countFoundedCrosswordsResponse")]
+        System.Threading.Tasks.Task<int> countFoundedCrosswordsAsync(string crosswodName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveCoins", ReplyAction="http://tempuri.org/IDBConnection/saveCoinsResponse")]
+        void saveCoins(long uid, int coins);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveCoins", ReplyAction="http://tempuri.org/IDBConnection/saveCoinsResponse")]
+        System.Threading.Tasks.Task saveCoinsAsync(long uid, int coins);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -578,6 +605,22 @@ namespace Client.ClientService {
         
         public System.Threading.Tasks.Task<int> countCrosswordsAsync() {
             return base.Channel.countCrosswordsAsync();
+        }
+        
+        public int countFoundedCrosswords(string crosswodName) {
+            return base.Channel.countFoundedCrosswords(crosswodName);
+        }
+        
+        public System.Threading.Tasks.Task<int> countFoundedCrosswordsAsync(string crosswodName) {
+            return base.Channel.countFoundedCrosswordsAsync(crosswodName);
+        }
+        
+        public void saveCoins(long uid, int coins) {
+            base.Channel.saveCoins(uid, coins);
+        }
+        
+        public System.Threading.Tasks.Task saveCoinsAsync(long uid, int coins) {
+            return base.Channel.saveCoinsAsync(uid, coins);
         }
     }
 }
