@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -42,9 +43,9 @@ namespace Client
                 FilterBox.Children.Add(createCheckBox(themes[i]));
         }
 
-        private RadioButton createCheckBox(string filterItemName)
+        private CheckBox createCheckBox(string filterItemName)
         {
-            RadioButton cb = new RadioButton();
+            CheckBox cb = new CheckBox();
             cb.Content = filterItemName;
             cb.Foreground = new SolidColorBrush(Colors.White);
             return cb;
@@ -53,24 +54,23 @@ namespace Client
         private void paginationBtnClick(object sender, RoutedEventArgs e)
         {
             int page = Int32.Parse((e.OriginalSource as Button).Content.ToString());
-
+            long uid = user == null ? -1 : user.IDk__BackingField;
             currentPage = page;
             createPagination();
             switch (crosswordsWindow)
             {
                 case CrosswordsWindow.ALL_CROSSWORDS:
-                    items = new ObservableCollection<Crossword>(client.getCrosswords((currentPage - 1) * pageElementsCount, pageElementsCount));
+                    items = new ObservableCollection<Crossword>(client.filterCrosswordsByThemeName((currentPage - 1) * pageElementsCount, pageElementsCount, buildThemes(),
+                        SearchBox.Text + "%", -1));
                     break;
                 case CrosswordsWindow.USER_CROSSWORDS:
                     items = loadUsersCrossword();
                     break;
                 case CrosswordsWindow.SEARCH_CROSSWORDS:
-                    items = items = new ObservableCollection<Crossword>(client.findCrosswords((currentPage - 1) * pageElementsCount,
-                                                                                               pageElementsCount,
-                                                                                               SearchBox.Text));
+                    items = items = new ObservableCollection<Crossword>(client.filterCrosswordsByThemeName((currentPage - 1) * pageElementsCount,
+                                                                                               pageElementsCount, buildThemes(), SearchBox.Text + "%", uid));
                     break;
             }
-            //items = new ObservableCollection<Crossword>(client.getCrosswords((currentPage - 1) * pageElementsCount, pageElementsCount));
             crosswordItems.ItemsSource = items;
             Console.WriteLine(page);
         }
@@ -187,14 +187,47 @@ namespace Client
 
         private void crosswordsBtn_Click(object sender, RoutedEventArgs e)
         {
-            welcomeText.Visibility = Visibility.Collapsed;
+            string filterThemes = buildThemes();
+            string searchCrosswordName = SearchBox.Text + "%";
+            currentPage = 1;
+           
+            items = new ObservableCollection<Crossword>
+                    (client.filterCrosswordsByThemeName((currentPage - 1),
+                    pageElementsCount, filterThemes, searchCrosswordName, -1));
+            
             maxPage = client.countCrosswords() / pageElementsCount + 1;
-            items = new ObservableCollection<Crossword>(client.getCrosswords((currentPage-1) * pageElementsCount, pageElementsCount));
+            
+            welcomeText.Visibility = Visibility.Collapsed;
+            
             crosswordsWindow = CrosswordsWindow.ALL_CROSSWORDS;
             CrosswordsTable.Visibility = Visibility.Visible;
             crosswordItems.ItemsSource = items;
-
             createPagination();
+        }
+
+        private string buildThemes()
+        {
+            int count = FilterBox.Children.Count;
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < count; i++)
+            {
+                if (((CheckBox)FilterBox.Children[i]).IsChecked ?? false)
+                {
+                    if (sb.Length > 0)
+                        sb.Append(",");
+                    sb.Append((i+1).ToString());
+                }
+            }
+            if(sb.Length == 0)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                        if (sb.Length > 0)
+                            sb.Append(",");
+                        sb.Append((i + 1).ToString());
+                }
+            }
+            return sb.ToString();
         }
 
         private void createBtn_Click(object sender, RoutedEventArgs e)
@@ -243,10 +276,11 @@ namespace Client
 
         private ObservableCollection<Crossword> loadUsersCrossword()
         {
+            string filter = buildThemes();
            ObservableCollection<Crossword> crosswords =  
-                new ObservableCollection<Crossword>(client.getUserCrosswords((int)user.IDk__BackingField,
+                new ObservableCollection<Crossword>(client.filterCrosswordsByThemeName(
                                                                              (currentPage - 1) * pageElementsCount,
-                                                                             pageElementsCount));
+                                                                             pageElementsCount, filter, SearchBox.Text + "%", user.IDk__BackingField));
             foreach (Crossword cw in crosswords)
             {
                 cw.OwnerLogink__BackingField = user.Logink__BackingField;
@@ -279,31 +313,19 @@ namespace Client
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(SearchBox.Text == "")
-            {
-                maxPage = client.countCrosswords() / pageElementsCount + 1;
-                currentPage = 1;
-                items = new ObservableCollection<Crossword>(client.getCrosswords((currentPage - 1) * pageElementsCount, pageElementsCount));
-                crosswordsWindow = CrosswordsWindow.ALL_CROSSWORDS;
-                CrosswordsTable.Visibility = Visibility.Visible;
-                crosswordItems.ItemsSource = items;
+            currentPage = 1;
+            string filterThemes = buildThemes();
+            string searchCrosswordName = SearchBox.Text + "%";
+            long uid = user == null ? -1 : user.IDk__BackingField;
+            items = new ObservableCollection<Crossword>
+                        (client.filterCrosswordsByThemeName((currentPage - 1),
+                        pageElementsCount, filterThemes, searchCrosswordName, uid));
+            maxPage = client.countCrosswords() / pageElementsCount + 1;
 
-                createPagination();
-            }
-            else
-            {
-                maxPage = client.countFoundedCrosswords(SearchBox.Text);
-                items = new ObservableCollection<Crossword>(client.findCrosswords((currentPage - 1) * pageElementsCount,
-                                                                                                   pageElementsCount,
-                                                                                                   SearchBox.Text));
-                welcomeText.Visibility = Visibility.Collapsed;
-                CrosswordsTable.Visibility = Visibility.Visible;
-                createPagination();
-                crosswordsWindow = CrosswordsWindow.SEARCH_CROSSWORDS;
-                crosswordItems.ItemsSource = items;
-                currentPage = 1;
-                createPagination();
-            }
+            crosswordItems.ItemsSource = items;
+            createPagination();
+            welcomeText.Visibility = Visibility.Collapsed;
+            CrosswordsTable.Visibility = Visibility.Visible;
         }
     }
 }

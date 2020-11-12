@@ -85,12 +85,6 @@
   <wsdl:message name="IDBConnection_getThemes_OutputMessage">
     <wsdl:part name="parameters" element="tns:getThemesResponse" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_getUserCrosswords_InputMessage">
-    <wsdl:part name="parameters" element="tns:getUserCrosswords" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_getUserCrosswords_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getUserCrosswordsResponse" />
-  </wsdl:message>
   <wsdl:message name="IDBConnection_insertQuestions_InputMessage">
     <wsdl:part name="parameters" element="tns:insertQuestions" />
   </wsdl:message>
@@ -109,23 +103,11 @@
   <wsdl:message name="IDBConnection_saveUsersCoins_OutputMessage">
     <wsdl:part name="parameters" element="tns:saveUsersCoinsResponse" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_filterCrosswordsByTheme_InputMessage">
-    <wsdl:part name="parameters" element="tns:filterCrosswordsByTheme" />
+  <wsdl:message name="IDBConnection_filterCrosswordsByThemeName_InputMessage">
+    <wsdl:part name="parameters" element="tns:filterCrosswordsByThemeName" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_filterCrosswordsByTheme_OutputMessage">
-    <wsdl:part name="parameters" element="tns:filterCrosswordsByThemeResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_findCrosswords_InputMessage">
-    <wsdl:part name="parameters" element="tns:findCrosswords" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_findCrosswords_OutputMessage">
-    <wsdl:part name="parameters" element="tns:findCrosswordsResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_filterUserCrosswordsByTheme_InputMessage">
-    <wsdl:part name="parameters" element="tns:filterUserCrosswordsByTheme" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_filterUserCrosswordsByTheme_OutputMessage">
-    <wsdl:part name="parameters" element="tns:filterUserCrosswordsByThemeResponse" />
+  <wsdl:message name="IDBConnection_filterCrosswordsByThemeName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:filterCrosswordsByThemeNameResponse" />
   </wsdl:message>
   <wsdl:message name="IDBConnection_countCrosswords_InputMessage">
     <wsdl:part name="parameters" element="tns:countCrosswords" />
@@ -178,10 +160,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getThemes" message="tns:IDBConnection_getThemes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getThemesResponse" message="tns:IDBConnection_getThemes_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="getUserCrosswords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getUserCrosswords" message="tns:IDBConnection_getUserCrosswords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getUserCrosswordsResponse" message="tns:IDBConnection_getUserCrosswords_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="insertQuestions">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/insertQuestions" message="tns:IDBConnection_insertQuestions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/insertQuestionsResponse" message="tns:IDBConnection_insertQuestions_OutputMessage" />
@@ -194,17 +172,9 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/saveUsersCoins" message="tns:IDBConnection_saveUsersCoins_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/saveUsersCoinsResponse" message="tns:IDBConnection_saveUsersCoins_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="filterCrosswordsByTheme">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/filterCrosswordsByTheme" message="tns:IDBConnection_filterCrosswordsByTheme_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeResponse" message="tns:IDBConnection_filterCrosswordsByTheme_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="findCrosswords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/findCrosswords" message="tns:IDBConnection_findCrosswords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/findCrosswordsResponse" message="tns:IDBConnection_findCrosswords_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="filterUserCrosswordsByTheme">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/filterUserCrosswordsByTheme" message="tns:IDBConnection_filterUserCrosswordsByTheme_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/filterUserCrosswordsByThemeResponse" message="tns:IDBConnection_filterUserCrosswordsByTheme_OutputMessage" />
+    <wsdl:operation name="filterCrosswordsByThemeName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName" message="tns:IDBConnection_filterCrosswordsByThemeName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeNameResponse" message="tns:IDBConnection_filterCrosswordsByThemeName_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="countCrosswords">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/countCrosswords" message="tns:IDBConnection_countCrosswords_InputMessage" />
@@ -293,15 +263,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getUserCrosswords">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/getUserCrosswords" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="insertQuestions">
       <soap:operation soapAction="http://tempuri.org/IDBConnection/insertQuestions" style="document" />
       <wsdl:input>
@@ -329,26 +290,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="filterCrosswordsByTheme">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/filterCrosswordsByTheme" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCrosswords">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/findCrosswords" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="filterUserCrosswordsByTheme">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/filterUserCrosswordsByTheme" style="document" />
+    <wsdl:operation name="filterCrosswordsByThemeName">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -459,15 +402,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getUserCrosswords">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/getUserCrosswords" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="insertQuestions">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/insertQuestions" style="document" />
       <wsdl:input>
@@ -495,26 +429,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="filterCrosswordsByTheme">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/filterCrosswordsByTheme" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="findCrosswords">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/findCrosswords" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="filterUserCrosswordsByTheme">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/filterUserCrosswordsByTheme" style="document" />
+    <wsdl:operation name="filterCrosswordsByThemeName">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -41,8 +41,10 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="60,0,0,0.2" Width="699">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,187.2,0" Width="512">
-                    <TextBox x:Name="SearchBox" Width="300"/>
-                    <Button x:Name="SearchBtn" Click="SearchBtn_Click" Content="Find"/>
+                    <TextBox x:Name="SearchBox" CaretBrush="White" Background="Transparent" Margin="0, 10,0,0" FontSize="16" BorderBrush="White" Foreground="White" BorderThickness="0,0,0,3" Width="300"/>
+                    <Button Background="Transparent" BorderThickness="0" x:Name="SearchBtn" Click="SearchBtn_Click">
+                        <Image Width="25" Height="25" Source="E:\labs\5sem\OSISP\DBService\Client\Images\Search.png" Opacity="0.575" />
+                    </Button>
                 </StackPanel>
 
                 <StackPanel x:Name="welcomeText" Visibility="Collapsed">

@@ -34,10 +34,7 @@ namespace DBService
 
         [OperationContract]
         List<string> getThemes();
-
-        [OperationContract]
-        List<Crossword> getUserCrosswords(int id, int offset, int length);
-
+  
         [OperationContract]
         int insertQuestions(List<QuestionAnswer> items, int owner_id);
 
@@ -48,13 +45,7 @@ namespace DBService
         void saveUsersCoins(long userId, int coins);
 
         [OperationContract]
-        List<Crossword> filterCrosswordsByTheme(int offset, int count, int themeId);
-
-        [OperationContract]
-        List<Crossword> findCrosswords(int offset, int count, string crosswordName);
-
-        [OperationContract]
-        List<Crossword> filterUserCrosswordsByTheme(int id, int offset, int length, int themeId);
+        List<Crossword> filterCrosswordsByThemeName(int offset, int length, string themeIds, string crosswordName, long uid);
 
         [OperationContract]
         int countCrosswords();
@@ -64,5 +55,6 @@ namespace DBService
 
         [OperationContract]
         void saveCoins(long uid, int coins);
+        
     }
 }
