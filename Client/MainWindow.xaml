@@ -36,8 +36,15 @@
             </StackPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" x:Name="MainSection" HorizontalAlignment="Right" Height="491" Margin="0,0,-0.4,0" VerticalAlignment="Top" Width="1074" Background="#FF1B1445">
-            <StackPanel x:Name="FilterBox" Margin="0,0,0,0.2" Width="107">
-                
+
+            <StackPanel>
+                <StackPanel x:Name="FilterBox" Margin="0,0,0,0.2" Width="107">
+                    <TextBlock Margin="10" Text="Filter by" Foreground="White" FontSize="16"></TextBlock>
+                </StackPanel>
+                <StackPanel Margin="0,50,0,0" x:Name="EditDelete"  Orientation="Vertical" HorizontalAlignment="Center">
+                    <Button Style="{StaticResource ModernButton}" Height="40" Width="100" FontSize="16" Content="Edit" Click="EditBtnClick"/>
+                    <Button Margin="0,5,0,0" Style="{StaticResource ModernButton}" Height="40" Width="100" FontSize="16" Content="Delete" Click="DeleteBtnClick"></Button>
+                </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" Margin="60,0,0,0.2" Width="699">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,0,187.2,0" Width="512">
@@ -47,6 +54,12 @@
                     </Button>
                 </StackPanel>
 
+                <StackPanel x:Name="NotFound" Visibility="Collapsed">
+                    <Label Margin="0,20,0,0" Foreground="White" FontSize="20">YOU HAVEN'T CREATED ANY CROSSWORDS!</Label>
+                    <Label Margin="20,20,0,0" Foreground="White" FontSize="20">- Go to the menu and find "Create Crossword"</Label>
+                    <Label Margin="20,0" Foreground="White" FontSize="20">- Click the button and create the best one!</Label>
+                </StackPanel>
+                
                 <StackPanel x:Name="welcomeText" Visibility="Collapsed">
                     <Label Margin="30,0,0,0" Foreground="White" FontSize="30">
                         WELCOME TO THE
@@ -61,7 +74,7 @@
 
 
                 </StackPanel>
-                <StackPanel Visibility="Collapsed" x:Name="CrosswordsTable" Orientation="Vertical" Margin="0,0,-150.4,0">
+                <StackPanel Visibility="Collapsed" x:Name="CrosswordsTable" Orientation="Vertical" Margin="0,0,-150.8,0" Height="433">
                     <ListBox TextBlock.Foreground="White" Background="#FFD8D7E5" x:Name="crosswordItems" HorizontalContentAlignment="Stretch" Height="390" FontSize="14" FontFamily="Segoe UI Semibold" BorderBrush="#FFEAEAEA">
                         <ListBox.Template>
                             <ControlTemplate>
@@ -70,7 +83,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="70" />
+                                            <ColumnDefinition Width="90" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Label HorizontalAlignment="Center" FontSize="20" Grid.Column="0" Foreground="White">NAME</Label>
@@ -124,9 +137,10 @@
                         </ListBox.ItemContainerStyle>
 
                     </ListBox>
-                    <StackPanel Margin="0, 15, 0, 0" x:Name="PaginationPanel" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Margin="0, 10, 0, 0" x:Name="PaginationPanel" Orientation="Horizontal" HorizontalAlignment="Center">
 
                     </StackPanel>
+
                 </StackPanel>
             </StackPanel>
             <StackPanel  x:Name="Menu" Width="210" HorizontalAlignment="Right" Background="#FF2B055F" Margin="0,0,0,0.2">

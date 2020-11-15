@@ -35,26 +35,9 @@
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DBService" />
       <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Client" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IDBConnection_GetSum_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetSum" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_GetSum_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetSumResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_GetDiff_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetDiff" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_GetDiff_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetDiffResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_GetTableData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTableData" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_GetTableData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTableDataResponse" />
-  </wsdl:message>
   <wsdl:message name="IDBConnection_signUpUser_InputMessage">
     <wsdl:part name="parameters" element="tns:signUpUser" />
   </wsdl:message>
@@ -66,12 +49,6 @@
   </wsdl:message>
   <wsdl:message name="IDBConnection_SignInUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:SignInUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_getCrosswords_InputMessage">
-    <wsdl:part name="parameters" element="tns:getCrosswords" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_getCrosswords_OutputMessage">
-    <wsdl:part name="parameters" element="tns:getCrosswordsResponse" />
   </wsdl:message>
   <wsdl:message name="IDBConnection_createCrossword_InputMessage">
     <wsdl:part name="parameters" element="tns:createCrossword" />
@@ -85,6 +62,12 @@
   <wsdl:message name="IDBConnection_getThemes_OutputMessage">
     <wsdl:part name="parameters" element="tns:getThemesResponse" />
   </wsdl:message>
+  <wsdl:message name="IDBConnection_editCrossword_InputMessage">
+    <wsdl:part name="parameters" element="tns:editCrossword" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_editCrossword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:editCrosswordResponse" />
+  </wsdl:message>
   <wsdl:message name="IDBConnection_insertQuestions_InputMessage">
     <wsdl:part name="parameters" element="tns:insertQuestions" />
   </wsdl:message>
@@ -97,29 +80,23 @@
   <wsdl:message name="IDBConnection_getCrosswordQuestions_OutputMessage">
     <wsdl:part name="parameters" element="tns:getCrosswordQuestionsResponse" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_saveUsersCoins_InputMessage">
-    <wsdl:part name="parameters" element="tns:saveUsersCoins" />
-  </wsdl:message>
-  <wsdl:message name="IDBConnection_saveUsersCoins_OutputMessage">
-    <wsdl:part name="parameters" element="tns:saveUsersCoinsResponse" />
-  </wsdl:message>
   <wsdl:message name="IDBConnection_filterCrosswordsByThemeName_InputMessage">
     <wsdl:part name="parameters" element="tns:filterCrosswordsByThemeName" />
   </wsdl:message>
   <wsdl:message name="IDBConnection_filterCrosswordsByThemeName_OutputMessage">
     <wsdl:part name="parameters" element="tns:filterCrosswordsByThemeNameResponse" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_countCrosswords_InputMessage">
-    <wsdl:part name="parameters" element="tns:countCrosswords" />
+  <wsdl:message name="IDBConnection_countFilteredCrosswords_InputMessage">
+    <wsdl:part name="parameters" element="tns:countFilteredCrosswords" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_countCrosswords_OutputMessage">
-    <wsdl:part name="parameters" element="tns:countCrosswordsResponse" />
+  <wsdl:message name="IDBConnection_countFilteredCrosswords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:countFilteredCrosswordsResponse" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_countFoundedCrosswords_InputMessage">
-    <wsdl:part name="parameters" element="tns:countFoundedCrosswords" />
+  <wsdl:message name="IDBConnection_updateRathing_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateRathing" />
   </wsdl:message>
-  <wsdl:message name="IDBConnection_countFoundedCrosswords_OutputMessage">
-    <wsdl:part name="parameters" element="tns:countFoundedCrosswordsResponse" />
+  <wsdl:message name="IDBConnection_updateRathing_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateRathingResponse" />
   </wsdl:message>
   <wsdl:message name="IDBConnection_saveCoins_InputMessage">
     <wsdl:part name="parameters" element="tns:saveCoins" />
@@ -127,19 +104,13 @@
   <wsdl:message name="IDBConnection_saveCoins_OutputMessage">
     <wsdl:part name="parameters" element="tns:saveCoinsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDBConnection_deleteCrosswordById_InputMessage">
+    <wsdl:part name="parameters" element="tns:deleteCrosswordById" />
+  </wsdl:message>
+  <wsdl:message name="IDBConnection_deleteCrosswordById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deleteCrosswordByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDBConnection">
-    <wsdl:operation name="GetSum">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetSum" message="tns:IDBConnection_GetSum_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/GetSumResponse" message="tns:IDBConnection_GetSum_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDiff">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetDiff" message="tns:IDBConnection_GetDiff_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/GetDiffResponse" message="tns:IDBConnection_GetDiff_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTableData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/GetTableData" message="tns:IDBConnection_GetTableData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/GetTableDataResponse" message="tns:IDBConnection_GetTableData_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="signUpUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/signUpUser" message="tns:IDBConnection_signUpUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/signUpUserResponse" message="tns:IDBConnection_signUpUser_OutputMessage" />
@@ -147,10 +118,6 @@
     <wsdl:operation name="SignInUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/SignInUser" message="tns:IDBConnection_SignInUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/SignInUserResponse" message="tns:IDBConnection_SignInUser_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="getCrosswords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getCrosswords" message="tns:IDBConnection_getCrosswords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordsResponse" message="tns:IDBConnection_getCrosswords_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="createCrossword">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/createCrossword" message="tns:IDBConnection_createCrossword_InputMessage" />
@@ -160,6 +127,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getThemes" message="tns:IDBConnection_getThemes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getThemesResponse" message="tns:IDBConnection_getThemes_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="editCrossword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/editCrossword" message="tns:IDBConnection_editCrossword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/editCrosswordResponse" message="tns:IDBConnection_editCrossword_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="insertQuestions">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/insertQuestions" message="tns:IDBConnection_insertQuestions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/insertQuestionsResponse" message="tns:IDBConnection_insertQuestions_OutputMessage" />
@@ -168,56 +139,29 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordQuestions" message="tns:IDBConnection_getCrosswordQuestions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/getCrosswordQuestionsResponse" message="tns:IDBConnection_getCrosswordQuestions_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="saveUsersCoins">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/saveUsersCoins" message="tns:IDBConnection_saveUsersCoins_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/saveUsersCoinsResponse" message="tns:IDBConnection_saveUsersCoins_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="filterCrosswordsByThemeName">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName" message="tns:IDBConnection_filterCrosswordsByThemeName_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeNameResponse" message="tns:IDBConnection_filterCrosswordsByThemeName_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="countCrosswords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/countCrosswords" message="tns:IDBConnection_countCrosswords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/countCrosswordsResponse" message="tns:IDBConnection_countCrosswords_OutputMessage" />
+    <wsdl:operation name="countFilteredCrosswords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/countFilteredCrosswords" message="tns:IDBConnection_countFilteredCrosswords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/countFilteredCrosswordsResponse" message="tns:IDBConnection_countFilteredCrosswords_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="countFoundedCrosswords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/countFoundedCrosswords" message="tns:IDBConnection_countFoundedCrosswords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/countFoundedCrosswordsResponse" message="tns:IDBConnection_countFoundedCrosswords_OutputMessage" />
+    <wsdl:operation name="updateRathing">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/updateRathing" message="tns:IDBConnection_updateRathing_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/updateRathingResponse" message="tns:IDBConnection_updateRathing_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="saveCoins">
       <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/saveCoins" message="tns:IDBConnection_saveCoins_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/saveCoinsResponse" message="tns:IDBConnection_saveCoins_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="deleteCrosswordById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDBConnection/deleteCrosswordById" message="tns:IDBConnection_deleteCrosswordById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDBConnection/deleteCrosswordByIdResponse" message="tns:IDBConnection_deleteCrosswordById_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IDBConnection" type="tns:IDBConnection">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetSum">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/GetSum" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDiff">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/GetDiff" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTableData">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/GetTableData" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="signUpUser">
       <soap:operation soapAction="http://tempuri.org/IDBConnection/signUpUser" style="document" />
       <wsdl:input>
@@ -229,15 +173,6 @@
     </wsdl:operation>
     <wsdl:operation name="SignInUser">
       <soap:operation soapAction="http://tempuri.org/IDBConnection/SignInUser" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getCrosswords">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/getCrosswords" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -263,6 +198,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="editCrossword">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/editCrossword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertQuestions">
       <soap:operation soapAction="http://tempuri.org/IDBConnection/insertQuestions" style="document" />
       <wsdl:input>
@@ -281,15 +225,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="saveUsersCoins">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/saveUsersCoins" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="filterCrosswordsByThemeName">
       <soap:operation soapAction="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName" style="document" />
       <wsdl:input>
@@ -299,8 +234,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="countCrosswords">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/countCrosswords" style="document" />
+    <wsdl:operation name="countFilteredCrosswords">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/countFilteredCrosswords" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -308,8 +243,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="countFoundedCrosswords">
-      <soap:operation soapAction="http://tempuri.org/IDBConnection/countFoundedCrosswords" style="document" />
+    <wsdl:operation name="updateRathing">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/updateRathing" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -326,37 +261,19 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deleteCrosswordById">
+      <soap:operation soapAction="http://tempuri.org/IDBConnection/deleteCrosswordById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IDBConnection" type="tns:IDBConnection">
     <wsp:PolicyReference URI="#NetTcpBinding_IDBConnection_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
-    <wsdl:operation name="GetSum">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/GetSum" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDiff">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/GetDiff" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetTableData">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/GetTableData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="signUpUser">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/signUpUser" style="document" />
       <wsdl:input>
@@ -368,15 +285,6 @@
     </wsdl:operation>
     <wsdl:operation name="SignInUser">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/SignInUser" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="getCrosswords">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/getCrosswords" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -402,6 +310,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="editCrossword">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/editCrossword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="insertQuestions">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/insertQuestions" style="document" />
       <wsdl:input>
@@ -420,15 +337,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="saveUsersCoins">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/saveUsersCoins" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="filterCrosswordsByThemeName">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName" style="document" />
       <wsdl:input>
@@ -438,8 +346,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="countCrosswords">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/countCrosswords" style="document" />
+    <wsdl:operation name="countFilteredCrosswords">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/countFilteredCrosswords" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -447,8 +355,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="countFoundedCrosswords">
-      <soap12:operation soapAction="http://tempuri.org/IDBConnection/countFoundedCrosswords" style="document" />
+    <wsdl:operation name="updateRathing">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/updateRathing" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -458,6 +366,15 @@
     </wsdl:operation>
     <wsdl:operation name="saveCoins">
       <soap12:operation soapAction="http://tempuri.org/IDBConnection/saveCoins" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCrosswordById">
+      <soap12:operation soapAction="http://tempuri.org/IDBConnection/deleteCrosswordById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

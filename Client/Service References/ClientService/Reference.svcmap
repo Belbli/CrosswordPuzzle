@@ -26,6 +26,7 @@
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="c38ddb47-49b7-42ab-9e65-495bd57ba2cb" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd1" />
     <MetadataFile FileName="DBConnection.wsdl" MetadataType="Wsdl" ID="2c0e8f8d-2e90-4d99-9c10-43b31da7cc0a" SourceId="1" SourceUrl="http://localhost:8080/?wsdl" />
     <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="c6f2b819-0613-4da4-99ff-66bd8713fdbe" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd2" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="77bb164c-45e1-480b-a9ec-6aa30b87c008" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd4" />
     <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="dbaa4060-26ce-47cd-a78c-027c7889e5dd" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd3" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a44b53da-e5b1-4226-980d-aa87a799973b" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
   </Metadata>

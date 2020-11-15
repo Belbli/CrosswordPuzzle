@@ -339,27 +339,113 @@ namespace Client.ClientService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FilterRequest", Namespace="http://schemas.datacontract.org/2004/07/Client")]
+    [System.SerializableAttribute()]
+    public partial class FilterRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string CrosswordNamek__BackingFieldField;
+        
+        private int Lengthk__BackingFieldField;
+        
+        private int Offsetk__BackingFieldField;
+        
+        private string ThemeIdsk__BackingFieldField;
+        
+        private long Uidk__BackingFieldField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<CrosswordName>k__BackingField", IsRequired=true)]
+        public string CrosswordNamek__BackingField {
+            get {
+                return this.CrosswordNamek__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CrosswordNamek__BackingFieldField, value) != true)) {
+                    this.CrosswordNamek__BackingFieldField = value;
+                    this.RaisePropertyChanged("CrosswordNamek__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Length>k__BackingField", IsRequired=true)]
+        public int Lengthk__BackingField {
+            get {
+                return this.Lengthk__BackingFieldField;
+            }
+            set {
+                if ((this.Lengthk__BackingFieldField.Equals(value) != true)) {
+                    this.Lengthk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Lengthk__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Offset>k__BackingField", IsRequired=true)]
+        public int Offsetk__BackingField {
+            get {
+                return this.Offsetk__BackingFieldField;
+            }
+            set {
+                if ((this.Offsetk__BackingFieldField.Equals(value) != true)) {
+                    this.Offsetk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Offsetk__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<ThemeIds>k__BackingField", IsRequired=true)]
+        public string ThemeIdsk__BackingField {
+            get {
+                return this.ThemeIdsk__BackingFieldField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ThemeIdsk__BackingFieldField, value) != true)) {
+                    this.ThemeIdsk__BackingFieldField = value;
+                    this.RaisePropertyChanged("ThemeIdsk__BackingField");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="<Uid>k__BackingField", IsRequired=true)]
+        public long Uidk__BackingField {
+            get {
+                return this.Uidk__BackingFieldField;
+            }
+            set {
+                if ((this.Uidk__BackingFieldField.Equals(value) != true)) {
+                    this.Uidk__BackingFieldField = value;
+                    this.RaisePropertyChanged("Uidk__BackingField");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ClientService.IDBConnection")]
     public interface IDBConnection {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/GetSum", ReplyAction="http://tempuri.org/IDBConnection/GetSumResponse")]
-        int GetSum(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/GetSum", ReplyAction="http://tempuri.org/IDBConnection/GetSumResponse")]
-        System.Threading.Tasks.Task<int> GetSumAsync(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/GetDiff", ReplyAction="http://tempuri.org/IDBConnection/GetDiffResponse")]
-        int GetDiff(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/GetDiff", ReplyAction="http://tempuri.org/IDBConnection/GetDiffResponse")]
-        System.Threading.Tasks.Task<int> GetDiffAsync(int a, int b);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/GetTableData", ReplyAction="http://tempuri.org/IDBConnection/GetTableDataResponse")]
-        string GetTableData();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/GetTableData", ReplyAction="http://tempuri.org/IDBConnection/GetTableDataResponse")]
-        System.Threading.Tasks.Task<string> GetTableDataAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/signUpUser", ReplyAction="http://tempuri.org/IDBConnection/signUpUserResponse")]
         int signUpUser(string name, string login, string password);
@@ -373,12 +459,6 @@ namespace Client.ClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/SignInUser", ReplyAction="http://tempuri.org/IDBConnection/SignInUserResponse")]
         System.Threading.Tasks.Task<Client.ClientService.User> SignInUserAsync(string login, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getCrosswords", ReplyAction="http://tempuri.org/IDBConnection/getCrosswordsResponse")]
-        Client.ClientService.Crossword[] getCrosswords(int offset, int count);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getCrosswords", ReplyAction="http://tempuri.org/IDBConnection/getCrosswordsResponse")]
-        System.Threading.Tasks.Task<Client.ClientService.Crossword[]> getCrosswordsAsync(int offset, int count);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/createCrossword", ReplyAction="http://tempuri.org/IDBConnection/createCrosswordResponse")]
         int createCrossword(Client.ClientService.Crossword cw);
         
@@ -391,47 +471,53 @@ namespace Client.ClientService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getThemes", ReplyAction="http://tempuri.org/IDBConnection/getThemesResponse")]
         System.Threading.Tasks.Task<string[]> getThemesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/insertQuestions", ReplyAction="http://tempuri.org/IDBConnection/insertQuestionsResponse")]
-        int insertQuestions(Client.ClientService.QuestionAnswer[] items, int owner_id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/editCrossword", ReplyAction="http://tempuri.org/IDBConnection/editCrosswordResponse")]
+        int editCrossword(Client.ClientService.Crossword crossword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/editCrossword", ReplyAction="http://tempuri.org/IDBConnection/editCrosswordResponse")]
+        System.Threading.Tasks.Task<int> editCrosswordAsync(Client.ClientService.Crossword crossword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/insertQuestions", ReplyAction="http://tempuri.org/IDBConnection/insertQuestionsResponse")]
-        System.Threading.Tasks.Task<int> insertQuestionsAsync(Client.ClientService.QuestionAnswer[] items, int owner_id);
+        int insertQuestions(Client.ClientService.QuestionAnswer[] items, long owner_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/insertQuestions", ReplyAction="http://tempuri.org/IDBConnection/insertQuestionsResponse")]
+        System.Threading.Tasks.Task<int> insertQuestionsAsync(Client.ClientService.QuestionAnswer[] items, long owner_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getCrosswordQuestions", ReplyAction="http://tempuri.org/IDBConnection/getCrosswordQuestionsResponse")]
-        Client.ClientService.QuestionAnswer[] getCrosswordQuestions(int crosswirdID);
+        Client.ClientService.QuestionAnswer[] getCrosswordQuestions(long crosswirdID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/getCrosswordQuestions", ReplyAction="http://tempuri.org/IDBConnection/getCrosswordQuestionsResponse")]
-        System.Threading.Tasks.Task<Client.ClientService.QuestionAnswer[]> getCrosswordQuestionsAsync(int crosswirdID);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveUsersCoins", ReplyAction="http://tempuri.org/IDBConnection/saveUsersCoinsResponse")]
-        void saveUsersCoins(long userId, int coins);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveUsersCoins", ReplyAction="http://tempuri.org/IDBConnection/saveUsersCoinsResponse")]
-        System.Threading.Tasks.Task saveUsersCoinsAsync(long userId, int coins);
+        System.Threading.Tasks.Task<Client.ClientService.QuestionAnswer[]> getCrosswordQuestionsAsync(long crosswirdID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName", ReplyAction="http://tempuri.org/IDBConnection/filterCrosswordsByThemeNameResponse")]
-        Client.ClientService.Crossword[] filterCrosswordsByThemeName(int offset, int length, string themeIds, string crosswordName, long uid);
+        Client.ClientService.Crossword[] filterCrosswordsByThemeName(Client.ClientService.FilterRequest filter);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/filterCrosswordsByThemeName", ReplyAction="http://tempuri.org/IDBConnection/filterCrosswordsByThemeNameResponse")]
-        System.Threading.Tasks.Task<Client.ClientService.Crossword[]> filterCrosswordsByThemeNameAsync(int offset, int length, string themeIds, string crosswordName, long uid);
+        System.Threading.Tasks.Task<Client.ClientService.Crossword[]> filterCrosswordsByThemeNameAsync(Client.ClientService.FilterRequest filter);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countCrosswordsResponse")]
-        int countCrosswords();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countFilteredCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countFilteredCrosswordsResponse")]
+        long countFilteredCrosswords(Client.ClientService.FilterRequest filter);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countCrosswordsResponse")]
-        System.Threading.Tasks.Task<int> countCrosswordsAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countFilteredCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countFilteredCrosswordsResponse")]
+        System.Threading.Tasks.Task<long> countFilteredCrosswordsAsync(Client.ClientService.FilterRequest filter);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countFoundedCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countFoundedCrosswordsResponse")]
-        int countFoundedCrosswords(string crosswodName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/updateRathing", ReplyAction="http://tempuri.org/IDBConnection/updateRathingResponse")]
+        void updateRathing(long crosswordId, int rathing);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/countFoundedCrosswords", ReplyAction="http://tempuri.org/IDBConnection/countFoundedCrosswordsResponse")]
-        System.Threading.Tasks.Task<int> countFoundedCrosswordsAsync(string crosswodName);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/updateRathing", ReplyAction="http://tempuri.org/IDBConnection/updateRathingResponse")]
+        System.Threading.Tasks.Task updateRathingAsync(long crosswordId, int rathing);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveCoins", ReplyAction="http://tempuri.org/IDBConnection/saveCoinsResponse")]
         void saveCoins(long uid, int coins);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/saveCoins", ReplyAction="http://tempuri.org/IDBConnection/saveCoinsResponse")]
         System.Threading.Tasks.Task saveCoinsAsync(long uid, int coins);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/deleteCrosswordById", ReplyAction="http://tempuri.org/IDBConnection/deleteCrosswordByIdResponse")]
+        void deleteCrosswordById(long id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IDBConnection/deleteCrosswordById", ReplyAction="http://tempuri.org/IDBConnection/deleteCrosswordByIdResponse")]
+        System.Threading.Tasks.Task deleteCrosswordByIdAsync(long id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -461,30 +547,6 @@ namespace Client.ClientService {
                 base(binding, remoteAddress) {
         }
         
-        public int GetSum(int a, int b) {
-            return base.Channel.GetSum(a, b);
-        }
-        
-        public System.Threading.Tasks.Task<int> GetSumAsync(int a, int b) {
-            return base.Channel.GetSumAsync(a, b);
-        }
-        
-        public int GetDiff(int a, int b) {
-            return base.Channel.GetDiff(a, b);
-        }
-        
-        public System.Threading.Tasks.Task<int> GetDiffAsync(int a, int b) {
-            return base.Channel.GetDiffAsync(a, b);
-        }
-        
-        public string GetTableData() {
-            return base.Channel.GetTableData();
-        }
-        
-        public System.Threading.Tasks.Task<string> GetTableDataAsync() {
-            return base.Channel.GetTableDataAsync();
-        }
-        
         public int signUpUser(string name, string login, string password) {
             return base.Channel.signUpUser(name, login, password);
         }
@@ -499,14 +561,6 @@ namespace Client.ClientService {
         
         public System.Threading.Tasks.Task<Client.ClientService.User> SignInUserAsync(string login, string password) {
             return base.Channel.SignInUserAsync(login, password);
-        }
-        
-        public Client.ClientService.Crossword[] getCrosswords(int offset, int count) {
-            return base.Channel.getCrosswords(offset, count);
-        }
-        
-        public System.Threading.Tasks.Task<Client.ClientService.Crossword[]> getCrosswordsAsync(int offset, int count) {
-            return base.Channel.getCrosswordsAsync(offset, count);
         }
         
         public int createCrossword(Client.ClientService.Crossword cw) {
@@ -525,52 +579,52 @@ namespace Client.ClientService {
             return base.Channel.getThemesAsync();
         }
         
-        public int insertQuestions(Client.ClientService.QuestionAnswer[] items, int owner_id) {
+        public int editCrossword(Client.ClientService.Crossword crossword) {
+            return base.Channel.editCrossword(crossword);
+        }
+        
+        public System.Threading.Tasks.Task<int> editCrosswordAsync(Client.ClientService.Crossword crossword) {
+            return base.Channel.editCrosswordAsync(crossword);
+        }
+        
+        public int insertQuestions(Client.ClientService.QuestionAnswer[] items, long owner_id) {
             return base.Channel.insertQuestions(items, owner_id);
         }
         
-        public System.Threading.Tasks.Task<int> insertQuestionsAsync(Client.ClientService.QuestionAnswer[] items, int owner_id) {
+        public System.Threading.Tasks.Task<int> insertQuestionsAsync(Client.ClientService.QuestionAnswer[] items, long owner_id) {
             return base.Channel.insertQuestionsAsync(items, owner_id);
         }
         
-        public Client.ClientService.QuestionAnswer[] getCrosswordQuestions(int crosswirdID) {
+        public Client.ClientService.QuestionAnswer[] getCrosswordQuestions(long crosswirdID) {
             return base.Channel.getCrosswordQuestions(crosswirdID);
         }
         
-        public System.Threading.Tasks.Task<Client.ClientService.QuestionAnswer[]> getCrosswordQuestionsAsync(int crosswirdID) {
+        public System.Threading.Tasks.Task<Client.ClientService.QuestionAnswer[]> getCrosswordQuestionsAsync(long crosswirdID) {
             return base.Channel.getCrosswordQuestionsAsync(crosswirdID);
         }
         
-        public void saveUsersCoins(long userId, int coins) {
-            base.Channel.saveUsersCoins(userId, coins);
+        public Client.ClientService.Crossword[] filterCrosswordsByThemeName(Client.ClientService.FilterRequest filter) {
+            return base.Channel.filterCrosswordsByThemeName(filter);
         }
         
-        public System.Threading.Tasks.Task saveUsersCoinsAsync(long userId, int coins) {
-            return base.Channel.saveUsersCoinsAsync(userId, coins);
+        public System.Threading.Tasks.Task<Client.ClientService.Crossword[]> filterCrosswordsByThemeNameAsync(Client.ClientService.FilterRequest filter) {
+            return base.Channel.filterCrosswordsByThemeNameAsync(filter);
         }
         
-        public Client.ClientService.Crossword[] filterCrosswordsByThemeName(int offset, int length, string themeIds, string crosswordName, long uid) {
-            return base.Channel.filterCrosswordsByThemeName(offset, length, themeIds, crosswordName, uid);
+        public long countFilteredCrosswords(Client.ClientService.FilterRequest filter) {
+            return base.Channel.countFilteredCrosswords(filter);
         }
         
-        public System.Threading.Tasks.Task<Client.ClientService.Crossword[]> filterCrosswordsByThemeNameAsync(int offset, int length, string themeIds, string crosswordName, long uid) {
-            return base.Channel.filterCrosswordsByThemeNameAsync(offset, length, themeIds, crosswordName, uid);
+        public System.Threading.Tasks.Task<long> countFilteredCrosswordsAsync(Client.ClientService.FilterRequest filter) {
+            return base.Channel.countFilteredCrosswordsAsync(filter);
         }
         
-        public int countCrosswords() {
-            return base.Channel.countCrosswords();
+        public void updateRathing(long crosswordId, int rathing) {
+            base.Channel.updateRathing(crosswordId, rathing);
         }
         
-        public System.Threading.Tasks.Task<int> countCrosswordsAsync() {
-            return base.Channel.countCrosswordsAsync();
-        }
-        
-        public int countFoundedCrosswords(string crosswodName) {
-            return base.Channel.countFoundedCrosswords(crosswodName);
-        }
-        
-        public System.Threading.Tasks.Task<int> countFoundedCrosswordsAsync(string crosswodName) {
-            return base.Channel.countFoundedCrosswordsAsync(crosswodName);
+        public System.Threading.Tasks.Task updateRathingAsync(long crosswordId, int rathing) {
+            return base.Channel.updateRathingAsync(crosswordId, rathing);
         }
         
         public void saveCoins(long uid, int coins) {
@@ -579,6 +633,14 @@ namespace Client.ClientService {
         
         public System.Threading.Tasks.Task saveCoinsAsync(long uid, int coins) {
             return base.Channel.saveCoinsAsync(uid, coins);
+        }
+        
+        public void deleteCrosswordById(long id) {
+            base.Channel.deleteCrosswordById(id);
+        }
+        
+        public System.Threading.Tasks.Task deleteCrosswordByIdAsync(long id) {
+            return base.Channel.deleteCrosswordByIdAsync(id);
         }
     }
 }

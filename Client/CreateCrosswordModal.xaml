@@ -174,7 +174,7 @@
                     </ListBox>
                 </StackPanel>
                 <StackPanel>
-                    <Button Style="{StaticResource ModernButton}" Height="30" Margin="0,20,0,0" Width="100" Click="CreateCrosswordBtn_Click">Create Crossword</Button>
+                    <Button x:Name="CreateCrosswordBtn" Style="{StaticResource ModernButton}" Height="30" Margin="0,20,0,0" Width="100" Click="CreateCrosswordBtn_Click" Content="Create Crossword" />
                 </StackPanel>
             </StackPanel>
         </StackPanel>

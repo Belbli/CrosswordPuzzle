@@ -29,9 +29,19 @@ namespace DBService
             return Name;
         }
 
+        public List<QuestionAnswer> GetQuestions()
+        {
+            return questions;
+        }
+
         public int GetTheme()
         {
             return (int)theme;
+        }
+
+        public long GetID()
+        {
+            return ID;
         }
 
         public long GetOwnerID()

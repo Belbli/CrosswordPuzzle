@@ -158,7 +158,7 @@ namespace Client
     public class CrossField
     {
         int xStart = 60;
-        int yStart = 60;
+        int yStart = 80;
         int step = 25;
         List<Word> words = new List<Word>();
         Crossword crossword;
@@ -248,7 +248,8 @@ namespace Client
 
                     if (parent.solvedWords == parent.words.Count)
                     {
-                        MessageBox.Show("Congrats! You've solved puzzle");
+                        RateCrosswordModal rateModal = new RateCrosswordModal(parent.crossword.IDk__BackingField);
+                        rateModal.Show();
                     }
                 }
             }

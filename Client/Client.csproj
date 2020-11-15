@@ -84,6 +84,9 @@
     <Compile Include="ModalWindow.xaml.cs">
       <DependentUpon>ModalWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RateCrosswordModal.xaml.cs">
+      <DependentUpon>RateCrosswordModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ClientService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModernButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RateCrosswordModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,6 +199,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ClientService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientService\item4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ClientService\Reference.svcmap">

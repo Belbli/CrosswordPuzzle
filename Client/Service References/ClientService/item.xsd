@@ -2,48 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8080/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DBService" />
   <xs:import schemaLocation="http://localhost:8080/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:element name="GetSum">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="a" type="xs:int" />
-        <xs:element minOccurs="0" name="b" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSumResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetSumResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDiff">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="a" type="xs:int" />
-        <xs:element minOccurs="0" name="b" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDiffResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetDiffResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTableData">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetTableDataResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetTableDataResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+  <xs:import schemaLocation="http://localhost:8080/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/Client" />
   <xs:element name="signUpUser">
     <xs:complexType>
       <xs:sequence>
@@ -75,25 +34,10 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="getCrosswords">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="offset" type="xs:int" />
-        <xs:element minOccurs="0" name="count" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="getCrosswordsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="getCrosswordsResult" nillable="true" type="q2:ArrayOfCrossword" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="createCrossword">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="cw" nillable="true" type="q3:Crossword" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="cw" nillable="true" type="q2:Crossword" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -112,7 +56,21 @@
   <xs:element name="getThemesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getThemesResult" nillable="true" type="q4:ArrayOfstring" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="getThemesResult" nillable="true" type="q3:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editCrossword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="crossword" nillable="true" type="q4:Crossword" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="editCrosswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="editCrosswordResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,7 +78,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="items" nillable="true" type="q5:ArrayOfQuestionAnswer" />
-        <xs:element minOccurs="0" name="owner_id" type="xs:int" />
+        <xs:element minOccurs="0" name="owner_id" type="xs:long" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -134,7 +92,7 @@
   <xs:element name="getCrosswordQuestions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="crosswirdID" type="xs:int" />
+        <xs:element minOccurs="0" name="crosswirdID" type="xs:long" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -145,61 +103,45 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="saveUsersCoins">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userId" type="xs:long" />
-        <xs:element minOccurs="0" name="coins" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="saveUsersCoinsResponse">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
   <xs:element name="filterCrosswordsByThemeName">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="offset" type="xs:int" />
-        <xs:element minOccurs="0" name="length" type="xs:int" />
-        <xs:element minOccurs="0" name="themeIds" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="crosswordName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="uid" type="xs:long" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Client" minOccurs="0" name="filter" nillable="true" type="q7:FilterRequest" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="filterCrosswordsByThemeNameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="filterCrosswordsByThemeNameResult" nillable="true" type="q7:ArrayOfCrossword" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DBService" minOccurs="0" name="filterCrosswordsByThemeNameResult" nillable="true" type="q8:ArrayOfCrossword" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="countCrosswords">
+  <xs:element name="countFilteredCrosswords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Client" minOccurs="0" name="filter" nillable="true" type="q9:FilterRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="countFilteredCrosswordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="countFilteredCrosswordsResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateRathing">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="crosswordId" type="xs:long" />
+        <xs:element minOccurs="0" name="rathing" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateRathingResponse">
     <xs:complexType>
       <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="countCrosswordsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="countCrosswordsResult" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="countFoundedCrosswords">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="crosswodName" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="countFoundedCrosswordsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="countFoundedCrosswordsResult" type="xs:int" />
-      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="saveCoins">
@@ -211,6 +153,18 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="saveCoinsResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteCrosswordById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="deleteCrosswordByIdResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

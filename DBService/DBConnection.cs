@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Client;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -16,42 +17,7 @@ namespace DBService
                                                 Password={3};Database={4};",
                                                "localhost", 5432, "postgres", "rootroot", "crossword");
 
-        public int GetDiff(int a, int b)
-        {
-            return a - b;
-        }
-
-        public string GetTableData()
-        {
-            string data = "VALUE RETURNED";
-
-            using (var con = new NpgsqlConnection(connStr))
-            {
-                con.Open();
-
-                var sql = "SELECT * FROM users_data";
-
-                using (var cmd = new NpgsqlCommand(sql, con))
-                {
-                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
-                    {
-                        Console.WriteLine($"{rdr.GetName(0),-4} {rdr.GetName(1),-10} {rdr.GetName(2),10}");
-
-                        while (rdr.Read())
-                        {
-                            data += rdr.GetInt64(0).ToString() + " " + rdr.GetString(1) + " " + rdr.GetString(2) + "\n";
-                        }
-                    }
-                }
-            }
-            
-            return data;
-        }
-
-        public int GetSum(int a, int b)
-        {
-            return a + b;
-        }
+    
 
         public int signUpUser(string name, string login, string password)
         {
@@ -189,7 +155,33 @@ namespace DBService
             return themes;
         }
 
-        public int insertQuestions(List<QuestionAnswer> items, int owner_id)
+        public int editCrossword(Crossword crossword)
+        {
+            deleteCrosswordQuestions(crossword.GetID());
+            updateCrossword(crossword);
+            return insertQuestions(crossword.GetQuestions(), crossword.GetID());
+        }
+
+        private void updateCrossword(Crossword crossword)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("UPDATE crosswords SET crossword_name='{0}', crossword_theme={1} WHERE crossword_id={2}",
+                    crossword.GetName(), crossword.GetTheme(), crossword.GetID());
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
+        }
+
+        public int insertQuestions(List<QuestionAnswer> items, long owner_id)
         {
             int insertedItems = 0;
             using (var con = new NpgsqlConnection(connStr))
@@ -199,7 +191,7 @@ namespace DBService
                 foreach (QuestionAnswer qa in items)
                 {
                     var sql = String.Format("select * from insert_question('{0}', '{1}', {2})", qa.Question, qa.Answer, owner_id);
-
+                    Console.WriteLine(sql);
                     using (var cmd = new NpgsqlCommand(sql, con))
                     {
                         using (NpgsqlDataReader rdr = cmd.ExecuteReader())
@@ -212,51 +204,7 @@ namespace DBService
             return insertedItems;
         }
        
-
-        public List<Crossword> getCrosswords(int offset, int count)
-        {
-            List<Crossword> crosswords = new List<Crossword>();
-            using (var con = new NpgsqlConnection(connStr))
-            {
-                con.Open();
-
-                var sql = String.Format("select * from find_crosswords({0}, {1})", offset, count);
-
-                using (var cmd = new NpgsqlCommand(sql, con))
-                {
-                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
-                    {
-                        while (rdr.Read())
-                        {
-                            long id = rdr.GetInt32(0);
-                            string name = rdr.GetString(1);
-                            int theme = rdr.GetInt32(2);
-                            string owner = rdr.GetString(3);
-                            double rathing = rdr.GetDouble(4);
-                            crosswords.Add(new Crossword(id, name, theme, owner, rathing));
-                        }
-                    }
-                }
-            }
-            return crosswords;
-        }
-
-        public void saveUsersCoins(long userId, int coins)
-        {
-            using (var con = new NpgsqlConnection(connStr))
-            {
-                con.Open();
-                var sql = String.Format("UPDATE users_data SET user_coins = {0} WHERE user_id = {1}", coins, userId);
-                using (var cmd = new NpgsqlCommand(sql, con))
-                {
-                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
-                    {
-                    }
-                }
-            }
-        }
-
-        public List<QuestionAnswer> getCrosswordQuestions(int crosswirdID)
+        public List<QuestionAnswer> getCrosswordQuestions(long crosswirdID)
         {
             List<QuestionAnswer> questions = new List<QuestionAnswer>();
             using (var con = new NpgsqlConnection(connStr))
@@ -279,58 +227,38 @@ namespace DBService
             }
             return questions;
         }
-       
-
-        public int countCrosswords()
+    
+        public long countFilteredCrosswords(FilterRequest filter)
         {
             List<Crossword> crosswords = new List<Crossword>();
             using (var con = new NpgsqlConnection(connStr))
             {
                 con.Open();
 
-                var sql = "SELECT COUNT(*) from crosswords";
-
+                var sql = String.Format("select COUNT(*) from filter('{0}', '{1}', {2}, {3}, {4})",
+                    filter.ThemeIds, filter.CrosswordName, filter.Offset, filter.Length, filter.Uid);
+                Console.WriteLine(sql);
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
                     using (NpgsqlDataReader rdr = cmd.ExecuteReader())
                     {
                         rdr.Read();
-                        return rdr.GetInt32(0);
+                        return rdr.GetInt64(0);
                     }
                 }
             }
-            return 0;
         }
 
-        public int countFoundedCrosswords(string crosswodName)
+
+        public List<Crossword> filterCrosswordsByThemeName(FilterRequest filter)
         {
             List<Crossword> crosswords = new List<Crossword>();
             using (var con = new NpgsqlConnection(connStr))
             {
                 con.Open();
 
-                var sql = "SELECT COUNT(*) from crosswords where LOWER(crossword_name) LIKE LOWER('" + crosswodName + "%')";
-
-                using (var cmd = new NpgsqlCommand(sql, con))
-                {
-                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
-                    {
-                        rdr.Read();
-                        return rdr.GetInt32(0);
-                    }
-                }
-            }
-            return 0;
-        }
-
-        public List<Crossword> filterCrosswordsByThemeName(int offset, int length, string themeIds, string crosswordName, long uid)
-        {
-            List<Crossword> crosswords = new List<Crossword>();
-            using (var con = new NpgsqlConnection(connStr))
-            {
-                con.Open();
-
-                var sql = String.Format("select * from filter('{0}', '{1}', {2}, {3}, {4})", themeIds, crosswordName, offset, length, uid);
+                var sql = String.Format("select * from filter('{0}', '{1}', {2}, {3}, {4})",
+                    filter.ThemeIds, filter.CrosswordName, filter.Offset, filter.Length, filter.Uid);
                 Console.WriteLine(sql);
                 using (var cmd = new NpgsqlCommand(sql, con))
                 {
@@ -342,7 +270,7 @@ namespace DBService
                             string name = rdr.GetString(1);
                             int theme = rdr.GetInt32(2);
                             string owner = rdr.GetString(3);
-                            double rathing = rdr.GetDouble(4);
+                            double rathing = Math.Round(countRathing(id), 2);
                             crosswords.Add(new Crossword(id, name, theme, owner, rathing));
                         }
                     }
@@ -350,7 +278,85 @@ namespace DBService
             }
             return crosswords;
         }
-        
+
+        private float countRathing(long crosswordId)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("select * from countCrosswordRathing({0})", crosswordId);
+                //Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        rdr.Read();
+                        int peopleSolved = rdr.GetInt32(0);
+                        int rathingSum = rdr.GetInt32(1);
+                        if (peopleSolved == 0 || rathingSum == 0)
+                            return 0;
+                        else
+                            return (float)Math.Round(((float)rathingSum / (float)peopleSolved), 2);
+                    }
+                }
+            }
+        }
+
+        public void updateRathing(long crosswordId, int rathing)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("select * from updateRathing({0}, {1})", crosswordId, rathing);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+                        
+                    }
+                }
+            }
+        }
+
+        private void deleteCrosswordQuestions(long id)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("DELETE from crosswords_questions where crossword_id = " + id);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
+        }
+
+        public void deleteCrosswordById(long id)
+        {
+            deleteCrosswordQuestions(id);
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("DELETE from crosswords where crossword_id = " + id);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
+        }
     }
 
 }

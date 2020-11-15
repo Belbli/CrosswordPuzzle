@@ -16,19 +16,37 @@ namespace Client
         ObservableCollection<QuestionAnswer> questionsAnsrews = new ObservableCollection<QuestionAnswer>();
         ObservableCollection<QuestionAnswer> reserveWords = new ObservableCollection<QuestionAnswer>();
         User creator;
+        Crossword editCrossword;
         string prevWord = "";
 
-        public CreateCrosswordModal(User user)
+        public CreateCrosswordModal(User user, Crossword crossword)
         {
             InitializeComponent();
             creator = user;
+
             DBConnectionClient client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
             CrosswordThemes.ItemsSource = client.getThemes();
-            
+            if (crossword != null)
+            {
+                editCrossword = crossword;
+                setFieldsData();
+                Title = "Edit Crossword";
+                CreateCrosswordBtn.Content = "Save Changes";
+            }
+
             questionsLB.ItemsSource = questionsAnsrews;
             ReserveWordsLB.ItemsSource = reserveWords;
-
+            
             client.Close();
+
+        }
+
+        private void setFieldsData()
+        {
+            CrosswordName.Text = editCrossword.Namek__BackingField;
+            CrosswordThemes.Text = editCrossword.Themek__BackingField;
+            DBConnectionClient client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
+            questionsAnsrews = new ObservableCollection<QuestionAnswer>(editCrossword.questionsk__BackingField);
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -156,30 +174,39 @@ namespace Client
             }
             else
             {
-                Crossword cw = createCrossword();
-                saveCrossword(cw);
+                createCrossword();
+                saveCrossword();
             }
             
         }
 
-        private Crossword createCrossword()
+        private void createCrossword()
         {
-            Crossword cw = new Crossword();
-            cw.Namek__BackingField = CrosswordName.Text;
-            cw.theme = (Crossword.ThemeE)CrosswordThemes.SelectedIndex + 1;
-            cw.OwnerIDk__BackingField = creator.IDk__BackingField;
-            cw.Rathingk__BackingField = 0;
+            if (editCrossword == null)
+                editCrossword = new Crossword();
+            editCrossword.Namek__BackingField = CrosswordName.Text;
+            editCrossword.theme = (Crossword.ThemeE)CrosswordThemes.SelectedIndex + 1;
+            editCrossword.OwnerIDk__BackingField = creator.IDk__BackingField;
+            editCrossword.Rathingk__BackingField = 0;
             QuestionAnswer[] qa = convertToArray(questionsLB.Items);
-            cw.questionsk__BackingField = qa;
-            return cw;
+            editCrossword.questionsk__BackingField = qa;
         }
 
-        private void saveCrossword(Crossword cw)
+        private void saveCrossword()
         {
             DBConnectionClient client = new DBConnectionClient("BasicHttpBinding_IDBConnection");
-            int index = client.createCrossword(cw);
-            int insertedItems = client.insertQuestions(cw.questionsk__BackingField, index);
-            MessageBox.Show(index.ToString());
+            if(editCrossword.IDk__BackingField != 0)
+            {
+                client.editCrossword(editCrossword);
+                MessageBox.Show("Crossword updated successfully!");
+            }
+            else
+            {
+                int index = client.createCrossword(editCrossword);
+                int insertedItems = client.insertQuestions(editCrossword.questionsk__BackingField, index);
+                MessageBox.Show(index.ToString());
+            }
+            
             client.Close();
         }
 

@@ -17,6 +17,7 @@ namespace DBHost
                 Console.WriteLine("Host started");
                 Console.ReadLine();
             }
+            Console.ReadLine();
         }
     }
 }

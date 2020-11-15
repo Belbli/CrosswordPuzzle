@@ -10,12 +10,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
-  <xs:complexType name="ArrayOfCrossword">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Crossword" nillable="true" type="tns:Crossword" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCrossword" nillable="true" type="tns:ArrayOfCrossword" />
   <xs:complexType name="Crossword">
     <xs:sequence>
       <xs:element name="_x003C_ID_x003E_k__BackingField" type="xs:long" />
@@ -103,4 +97,10 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Crossword.ThemeE" nillable="true" type="tns:Crossword.ThemeE" />
+  <xs:complexType name="ArrayOfCrossword">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Crossword" nillable="true" type="tns:Crossword" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrossword" nillable="true" type="tns:ArrayOfCrossword" />
 </xs:schema>

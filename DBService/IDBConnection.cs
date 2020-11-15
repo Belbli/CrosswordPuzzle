@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,49 +13,40 @@ namespace DBService
     public interface IDBConnection
     {
         [OperationContract]
-        int GetSum(int a, int b);
-
-        [OperationContract]
-        int GetDiff(int a, int b);
-
-        [OperationContract]
-        string GetTableData();
-
-        [OperationContract]
         int signUpUser(string name, string login, string password);
 
         [OperationContract]
         User SignInUser(string login, string password);
 
         [OperationContract]
-        List<Crossword> getCrosswords(int offset, int count);
-
-        [OperationContract]
         int createCrossword(Crossword cw);
 
         [OperationContract]
         List<string> getThemes();
-  
-        [OperationContract]
-        int insertQuestions(List<QuestionAnswer> items, int owner_id);
 
         [OperationContract]
-        List<QuestionAnswer> getCrosswordQuestions(int crosswirdID);
+        int editCrossword(Crossword crossword);
 
         [OperationContract]
-        void saveUsersCoins(long userId, int coins);
+        int insertQuestions(List<QuestionAnswer> items, long owner_id);
 
         [OperationContract]
-        List<Crossword> filterCrosswordsByThemeName(int offset, int length, string themeIds, string crosswordName, long uid);
+        List<QuestionAnswer> getCrosswordQuestions(long crosswirdID);
 
         [OperationContract]
-        int countCrosswords();
+        List<Crossword> filterCrosswordsByThemeName(FilterRequest filter);
 
         [OperationContract]
-        int countFoundedCrosswords(string crosswodName);
+        long countFilteredCrosswords(FilterRequest filter);
+
+        [OperationContract]
+        void updateRathing(long crosswordId, int rathing);
 
         [OperationContract]
         void saveCoins(long uid, int coins);
-        
+
+        [OperationContract]
+        void deleteCrosswordById(long id);
+
     }
 }
