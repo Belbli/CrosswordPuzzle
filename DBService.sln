@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBHost", "DBHost\DBHost.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{AC508AFB-DFBE-4B98-9EC8-22B891AD48A7}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "CrosswordPuzzleUCD", "CrosswordPuzzleUCD\CrosswordPuzzleUCD.modelproj", "{A22DBC0D-AE57-458B-9E99-BCDCD87672A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{AC508AFB-DFBE-4B98-9EC8-22B891AD48A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC508AFB-DFBE-4B98-9EC8-22B891AD48A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC508AFB-DFBE-4B98-9EC8-22B891AD48A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A22DBC0D-AE57-458B-9E99-BCDCD87672A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A22DBC0D-AE57-458B-9E99-BCDCD87672A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A22DBC0D-AE57-458B-9E99-BCDCD87672A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A22DBC0D-AE57-458B-9E99-BCDCD87672A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

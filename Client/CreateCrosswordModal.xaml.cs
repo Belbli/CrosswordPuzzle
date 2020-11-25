@@ -204,7 +204,7 @@ namespace Client
             {
                 int index = client.createCrossword(editCrossword);
                 int insertedItems = client.insertQuestions(editCrossword.questionsk__BackingField, index);
-                MessageBox.Show(index.ToString());
+                MessageBox.Show("Crossword created successfully!", "Success", MessageBoxButton.OK);
             }
             
             client.Close();

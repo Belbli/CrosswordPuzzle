@@ -35,7 +35,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Height="589" Margin="0,0,0.4,0">
-                <StackPanel Background="Aquamarine">
+                <StackPanel Visibility="Collapsed" x:Name="hintPanel" Background="Aquamarine">
                     <Button x:Name="LetterHint" Width="30" Height="30" Style="{StaticResource ModernButton}" Background="Green" Content="A?" Click="LetterHint_Click">
                         <Button.ToolTip>
                             <ToolTip Background="Bisque" BorderThickness="2">

@@ -343,7 +343,6 @@ namespace Client
             foreach (Crossword cw in crosswords)
             {
                 cw.OwnerLogink__BackingField = user.Logink__BackingField;
-
             }
             return crosswords;
         }
@@ -382,7 +381,11 @@ namespace Client
             currentPage = 1;
             string filterThemes = buildThemes();
             string searchCrosswordName = SearchBox.Text + "%";
-            long uid = user == null ? -1 : user.IDk__BackingField;
+            long uid;
+            if (user == null || crosswordsWindow != CrosswordsWindow.USER_CROSSWORDS)
+                uid = -1;
+            else
+                uid = user.IDk__BackingField;
             int offset = (currentPage - 1) * pageElementsCount;
             items = new ObservableCollection<Crossword>
                         (client.filterCrosswordsByThemeName(buildSearchRequest(uid , offset)));
@@ -415,12 +418,12 @@ namespace Client
                     computeMaxPageNumber(elements);
                     if (maxPage < currentPage)
                         currentPage--;
-                    int offset = (currentPage - 1) * pageElementsCount;
+                    if(currentPage > 0)
+                        currentPage -= 1;
+                    int offset = (currentPage) * pageElementsCount;
                     items = new ObservableCollection<Crossword>
                         (client.filterCrosswordsByThemeName(buildSearchRequest(user.IDk__BackingField, offset)));
                     crosswordItems.ItemsSource = items;
-                    
-                    
                     createPagination();
                 }
             }

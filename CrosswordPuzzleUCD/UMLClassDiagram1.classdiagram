@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="6b6372c7-3774-4d47-9532-35f46a23946b" name="UMLClassDiagram1" linkedPackageId="f64d9fa8-7caa-488c-a092-d7b10098b9a1" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <ownedCommentsInternal>
+    <comment Id="1962d0ea-78ea-4590-8104-a176f18da577">
+      <elementDefinition Id="a9b14ec4-1795-400d-99b9-cef5ddb4fa84" />
+      <body>Абстрактный класс с абстрактным методом подготовитьОвощи()
+</body>
+      <annotatedElements>
+        <classMoniker Id="89ef8d12-c1e5-4894-a649-7fa3ca21cb2c" LastKnownName="Приготовление_супа" />
+      </annotatedElements>
+    </comment>
+    <comment Id="356e3ed8-2e26-4500-a0ab-a1e6a89b3c93">
+      <elementDefinition Id="75821344-c334-45b0-ad51-78356bdf1e1b" />
+      <body>Наследуется от Приготовление_супа и реализует его абстрактный метод подготовить овощи</body>
+      <annotatedElements>
+        <classMoniker Id="ed41d5b3-2e1a-4107-a6b2-0a91d6c28dfc" LastKnownName="ПриготовлениеСупаПюре" />
+      </annotatedElements>
+    </comment>
+    <comment Id="515a6809-f8e8-46cb-9351-c3a519ce59f4">
+      <elementDefinition Id="62ad74d2-807d-409d-9669-11d6e1d16e9b" />
+      <body>Наследуется от Приготовление_супа и реализует его абстрактный метод подготовить овощи</body>
+      <annotatedElements>
+        <classMoniker Id="034b28c6-ee24-4429-8cce-c5a35fd771a2" LastKnownName="ПриготовлениеБорща" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="42d4ef91-82cd-49d3-9160-0e57197c26aa">
+      <profileInstance Id="8c8cc045-cb2e-46f8-8fb0-393eed96ad8d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="9cf997ba-520d-43cd-aa0a-1f6bc51acaeb">
+      <profileInstance Id="d2ed7ae7-4a79-443d-8870-6440fa22e01a" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="89ef8d12-c1e5-4894-a649-7fa3ca21cb2c" name="Приготовление_супа" isAbstract="true" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="82242486-c6a3-43dc-8110-5f95f7422cb0" />
+        <ownedOperationsInternal>
+          <operation Id="6a869a94-0a7b-4faf-a9c6-2c99a507b00a" name="приготовитьСуп" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2d97fb48-b2d6-420e-bdbf-fb5ac201f605" />
+          </operation>
+          <operation Id="5fe65c11-11a8-41c9-899a-e3c1ff69d6a5" name="подготовитьБульон" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e14932f7-905b-4c15-a718-03c20b0016dc" />
+          </operation>
+          <operation Id="59000425-4f13-4449-b126-6936c8fd3ca9" name="подготовитьОвощи" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f05b1b94-5be0-4829-aca5-c33180c86f1d" />
+          </operation>
+          <operation Id="bd7dc6bc-f98e-4783-b8f5-74d28310d131" name="разлитьПоТарелкам" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="03b1e75d-8ebe-4313-a577-e244013cdedf" />
+          </operation>
+          <operation Id="9fed013e-61e8-4c7f-bd88-18f6f2af5d17" name="заправитьСметаной" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="316bf39c-436e-4466-bfde-26dc4649e0b6" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="034b28c6-ee24-4429-8cce-c5a35fd771a2" name="ПриготовлениеБорща" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="706a50bc-0350-4fcf-8d0c-b17a157c3586" />
+        <generalsInternal>
+          <generalization Id="3c068425-b27c-400b-b764-8ecb32ebd3ed" isSubstitutable="false">
+            <classMoniker Id="89ef8d12-c1e5-4894-a649-7fa3ca21cb2c" LastKnownName="Приготовление_супа" />
+            <elementDefinition Id="e93a4c79-4bc9-4fbf-a321-4a52ad6a2933" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="d4822388-47e9-49ae-9df0-cdd1069d5a0d" name="подготовитьОвощи" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a7ce552a-16ce-45ba-b6e4-bdfb7a65bf54" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ed41d5b3-2e1a-4107-a6b2-0a91d6c28dfc" name="ПриготовлениеСупаПюре" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="d7dbea2b-66cb-411f-be68-98b9a8fe9bcd" />
+        <generalsInternal>
+          <generalization Id="5bfffb86-2f61-432b-acde-d3b968ba1d59" isSubstitutable="false">
+            <classMoniker Id="89ef8d12-c1e5-4894-a649-7fa3ca21cb2c" LastKnownName="Приготовление_супа" />
+            <elementDefinition Id="30f9239b-e2c5-47b9-84a0-90c9b6360b3c" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="bde606a9-0c79-45e7-b4a5-8cf498c19ecd" name="подготовитьОвощи" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d3016123-6279-4678-b63b-7bb3558c41dc" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="f64d9fa8-7caa-488c-a092-d7b10098b9a1" name="CrosswordPuzzleUCD">
+    <elementDefinition Id="def3c7af-e74d-43cf-86a8-2addf531364b" />
+  </package>
+</logicalClassDesignerModel>

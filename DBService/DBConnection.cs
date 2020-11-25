@@ -129,7 +129,27 @@ namespace DBService
                     }
                 }
             }
+            createRathing(crosswordID);
             return crosswordID;
+        }
+
+        private void createRathing(long crosswordId)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("INSERT INTO crossword_rathing (crossword_id, people_solved, rathing_count) VALUES({0}, {1}, {2})",
+                    crosswordId, 0, 0);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
         }
 
         public List<string> getThemes()
@@ -249,6 +269,23 @@ namespace DBService
             }
         }
 
+        private void deleteRathing(long crosswordId)
+        {
+            using (var con = new NpgsqlConnection(connStr))
+            {
+                con.Open();
+
+                string sql = String.Format("DELETE from crossword_rathing where crossword_id={0}", crosswordId);
+                Console.WriteLine(sql);
+                using (var cmd = new NpgsqlCommand(sql, con))
+                {
+                    using (NpgsqlDataReader rdr = cmd.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
+        }
 
         public List<Crossword> filterCrosswordsByThemeName(FilterRequest filter)
         {
@@ -341,6 +378,7 @@ namespace DBService
 
         public void deleteCrosswordById(long id)
         {
+            deleteRathing(id);
             deleteCrosswordQuestions(id);
             using (var con = new NpgsqlConnection(connStr))
             {

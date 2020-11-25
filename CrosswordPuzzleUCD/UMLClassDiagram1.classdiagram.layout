@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UMLClassDiagram1">
+  <logicalClassDesignerModelMoniker Id="6b6372c7-3774-4d47-9532-35f46a23946b" />
+  <nestedChildShapes>
+    <classShape Id="d44f6438-779d-4878-8be1-3f822c2f2a59" absoluteBounds="3.5, 1, 2.5, 1.7031249602635703" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="89ef8d12-c1e5-4894-a649-7fa3ca21cb2c" LastKnownName="Приготовление_супа" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="7539be26-bfd2-40b1-bd19-7182e505e8eb" absoluteBounds="3.515, 1.3900000000000001, 2.4699999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="c2df054e-edfa-474d-a177-ce911e63e2df" absoluteBounds="3.515, 1.6011718675494193, 2.4699999999999998, 1.0019530927141507" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bde705b0-4a02-4001-b7fb-8c23d5eb4cde" absoluteBounds="1.375, 3.375, 2, 1.0624999801317849" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="034b28c6-ee24-4429-8cce-c5a35fd771a2" LastKnownName="ПриготовлениеБорща" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="e4f28dad-3e9e-47ff-b63c-c6e014435028" absoluteBounds="1.3899999999999997, 3.765, 1.9700000000000002, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="eba6f7e2-0a63-463c-8975-f9128519073a" absoluteBounds="1.3899999999999997, 3.9761718675494193, 1.9700000000000002, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <generalizationConnector edgePoints="[(2.375 : 3.375); (2.375 : 3.07812496026357); (4.75 : 3.07812496026357); (4.75 : 2.70312496026357)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
+      <generalizationMoniker Id="3c068425-b27c-400b-b764-8ecb32ebd3ed" />
+      <relativeChildShapes />
+      <nodes>
+        <classShapeMoniker Id="bde705b0-4a02-4001-b7fb-8c23d5eb4cde" />
+        <classShapeMoniker Id="d44f6438-779d-4878-8be1-3f822c2f2a59" />
+      </nodes>
+    </generalizationConnector>
+    <classShape Id="6a735e65-32e6-4819-acd7-3347385e4116" absoluteBounds="5.875, 3.5, 2.125, 1.0624999801317845" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+      <classMoniker Id="ed41d5b3-2e1a-4107-a6b2-0a91d6c28dfc" LastKnownName="ПриготовлениеСупаПюре" />
+      <nestedChildShapes>
+        <AttributeElementListCompartment Id="94bd1bef-6d69-4542-b0d1-eef13a2267e5" absoluteBounds="5.89, 3.8899999999999997, 2.0949999999999998, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="d1d3b2fb-9e8b-4b47-91b1-59c3b4abb325" absoluteBounds="5.89, 4.10117186754942, 2.0949999999999998, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <generalizationConnector edgePoints="[(6.9375 : 3.5); (6.9375 : 3.07812496026357); (4.75 : 3.07812496026357); (4.75 : 2.70312496026357)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110">
+      <generalizationMoniker Id="5bfffb86-2f61-432b-acde-d3b968ba1d59" />
+      <relativeChildShapes />
+      <nodes>
+        <classShapeMoniker Id="6a735e65-32e6-4819-acd7-3347385e4116" />
+        <classShapeMoniker Id="d44f6438-779d-4878-8be1-3f822c2f2a59" />
+      </nodes>
+    </generalizationConnector>
+    <commentShape Id="a231a865-5917-482b-b63d-27c57e1025fc" absoluteBounds="6.5, 1.875, 1.5, 0.625" customColor="251, 247, 200">
+      <commentMoniker Id="1962d0ea-78ea-4590-8104-a176f18da577" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(6.5 : 2.1875); (6 : 2.1875)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="a231a865-5917-482b-b63d-27c57e1025fc" />
+        <classShapeMoniker Id="d44f6438-779d-4878-8be1-3f822c2f2a59" />
+      </nodes>
+    </commentConnector>
+    <commentShape Id="66978c34-3d24-40a8-baf1-715961d6356b" absoluteBounds="8.5, 4, 1.25, 0.875" customColor="251, 247, 200">
+      <commentMoniker Id="356e3ed8-2e26-4500-a0ab-a1e6a89b3c93" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(8.5 : 4.28124999006589); (8 : 4.28124999006589)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="66978c34-3d24-40a8-baf1-715961d6356b" />
+        <classShapeMoniker Id="6a735e65-32e6-4819-acd7-3347385e4116" />
+      </nodes>
+    </commentConnector>
+    <commentShape Id="d7445c80-7902-4a90-b6e3-7fb99be3400e" absoluteBounds="3.75, 4, 1.25, 0.875" customColor="251, 247, 200">
+      <commentMoniker Id="515a6809-f8e8-46cb-9351-c3a519ce59f4" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentConnector edgePoints="[(3.75 : 4.21874999006589); (3.375 : 4.21874999006589)]" fixedFrom="Algorithm" fixedTo="Algorithm" TargetRelationshipDomainClassId="217d6bd0-42ed-4e7f-ad2b-af3ef5142428" customColor="Black">
+      <relativeChildShapes />
+      <nodes>
+        <commentShapeMoniker Id="d7445c80-7902-4a90-b6e3-7fb99be3400e" />
+        <classShapeMoniker Id="bde705b0-4a02-4001-b7fb-8c23d5eb4cde" />
+      </nodes>
+    </commentConnector>
+  </nestedChildShapes>
+</logicalClassDesignerDiagram>

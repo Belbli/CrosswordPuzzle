@@ -1,0 +1,981 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="def3c7af-e74d-43cf-86a8-2addf531364b"
+  name="CrosswordPuzzleUCD" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="a9b14ec4-1795-400d-99b9-cef5ddb4fa84">
+      <body>Абстрактный класс с абстрактным методом подготовитьОвощи()
+</body>
+      <annotatedElements>
+        <classMoniker
+          Id="82242486-c6a3-43dc-8110-5f95f7422cb0"
+          LastKnownName="Приготовление_супа"
+          LastKnownLocation="CrosswordPuzzleUCD.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="75821344-c334-45b0-ad51-78356bdf1e1b">
+      <body>Наследуется от Приготовление_супа и реализует его абстрактный метод подготовить овощи</body>
+      <annotatedElements>
+        <classMoniker
+          Id="d7dbea2b-66cb-411f-be68-98b9a8fe9bcd"
+          LastKnownName="ПриготовлениеСупаПюре"
+          LastKnownLocation="CrosswordPuzzleUCD.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="62ad74d2-807d-409d-9669-11d6e1d16e9b">
+      <body>Наследуется от Приготовление_супа и реализует его абстрактный метод подготовить овощи</body>
+      <annotatedElements>
+        <classMoniker
+          Id="706a50bc-0350-4fcf-8d0c-b17a157c3586"
+          LastKnownName="ПриготовлениеБорща"
+          LastKnownLocation="CrosswordPuzzleUCD.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <subsystem
+        Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+        name="CrosswordPuzzle"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="1f5d9f50-7111-4955-b7a3-fbf7c185cac5"
+        name="Пользователь"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="3683143a-ff53-47fd-9636-e3bbadd6b29a"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Регистрация"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="28f2ba35-58d5-4a61-b45d-f96cc81b4a0f"
+              LastKnownName="Регистрация"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="41fe7f29-2eb8-4a51-887a-5da1d477c3d2"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8b937234-f39b-4a41-94bc-758377d33b4f"
+                  name="Регистрация"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="1e419ac1-2b08-489f-83d7-dc29e3a8476e"
+            isDerived="false"
+            sourceEndRoleName="User"
+            targetEndRoleName="Вход в аккаунт"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d1222d65-85f7-44f1-ba2c-d029c53fe106"
+              LastKnownName="Вход в аккаунт"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="537549ca-f4c1-4616-8690-bc2789f7cb2f"
+                  name="User"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="36c3078e-7316-4781-bb74-cfe9c02d36a5"
+                  name="Вход в аккаунт"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2fff0ac4-a7a7-4172-a907-a10c4dee483e"
+            isDerived="false"
+            sourceEndRoleName="Пользователь"
+            targetEndRoleName="Просмотр кроссвордов"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="d5b09990-f175-4e35-a4f0-c975a0ab001a"
+              LastKnownName="Просмотр кроссвордов"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="501a8c9f-6570-4df2-9f61-23ccd264e515"
+                  name="Пользователь"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3dc68e32-0742-4e9e-92f3-5e0569ac178f"
+                  name="Просмотр кроссвордов"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="159691a0-a54d-475d-b15e-71f480934eaf"
+            isDerived="false"
+            sourceEndRoleName="Пользователь"
+            targetEndRoleName="Создание кроссворда"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="dae0b8db-6ba1-4e8c-abbb-e1ba077f2703"
+              LastKnownName="Создание кроссворда"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="80345163-089f-4857-96a9-61abda7f03e6"
+                  name="Пользователь"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4af123a5-c728-472f-93d7-fc8b34ebdbca"
+                  name="Создание кроссворда"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3a4c911c-42e3-4140-9804-9bc0a8b0f64f"
+            isDerived="false"
+            sourceEndRoleName="Пользователь"
+            targetEndRoleName="Решение кроссворда"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="09c61093-4ac4-406d-9953-901f4adb1ac0"
+              LastKnownName="Решение кроссворда"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a7338c4f-69f9-46ec-a2cb-c45e44a46cf9"
+                  name="Пользователь"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="063e46fc-acb1-4ed8-bb67-1634848a1538"
+                  name="Решение кроссворда"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="405520d8-dbe4-432c-ba53-2712097eb51a"
+            isDerived="false"
+            sourceEndRoleName="Пользователь"
+            targetEndRoleName="Выход из аккаунта"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="76aa0f59-8c87-4c70-8ea5-1368ae8a1b24"
+              LastKnownName="Выход из аккаунта"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2607baa5-65db-4a3b-b5d1-7d2b6f7d2b62"
+                  name="Пользователь"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d1b069b4-a45d-4f9e-a3fa-10e8380257fd"
+                  name="Выход из аккаунта"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="28f2ba35-58d5-4a61-b45d-f96cc81b4a0f"
+        name="Регистрация"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="e96cb2ed-1d94-4875-a933-81c5e7046abb">
+            <useCaseMoniker
+              Id="a6462ba6-b9e7-4b4d-ae65-603e8c0d5b50"
+              LastKnownName="Ввод логина "
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </include>
+          <include
+            Id="fdade99c-28bc-43a5-8090-511df5dcd0a0">
+            <useCaseMoniker
+              Id="3a677f3e-f1b4-4700-a941-604473dd3771"
+              LastKnownName="Ввод пароля"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dae0b8db-6ba1-4e8c-abbb-e1ba077f2703"
+        name="Создание кроссворда"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d5b09990-f175-4e35-a4f0-c975a0ab001a"
+        name="Просмотр кроссвордов"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="021752b3-a716-4c38-a714-d1d01b530cac">
+            <useCaseMoniker
+              Id="1002421a-80f9-427a-a242-4136b89d44c2"
+              LastKnownName="Просмотр созданных кроссвордов"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+          <extend
+            Id="2e3a2e05-7072-47ae-89be-7a2caf09cae6">
+            <useCaseMoniker
+              Id="ab678286-d68b-4295-9933-0101476f23d9"
+              LastKnownName="Просмотр кроссвордов других пользователей"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f44b6901-9ad0-47a9-a9d2-b9ed7d22b7e0"
+        name="Удаление кроссворда"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="859acf4e-fd59-4b14-9892-0f6eac88cb2c"
+        name="Редактирование кроссворда"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="d1222d65-85f7-44f1-ba2c-d029c53fe106"
+        name="Вход в аккаунт"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a6462ba6-b9e7-4b4d-ae65-603e8c0d5b50"
+        name="Ввод логина "
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="3a677f3e-f1b4-4700-a941-604473dd3771"
+        name="Ввод пароля"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="1002421a-80f9-427a-a242-4136b89d44c2"
+        name="Просмотр созданных кроссвордов"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="ba0517fa-e32e-4cc0-bdb6-aa3fa34d04a2">
+            <useCaseMoniker
+              Id="e470f466-0516-4fb9-a892-1c0799021b3c"
+              LastKnownName="Фильтрация"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+          <extend
+            Id="b8a1aad3-ad49-4fc8-ba3c-adb5196114bf">
+            <useCaseMoniker
+              Id="77bf450b-d63a-4437-9a6f-921c301f280b"
+              LastKnownName="Поиск"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ab678286-d68b-4295-9933-0101476f23d9"
+        name="Просмотр кроссвордов других пользователей"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="5850e97b-4940-4e4d-9b89-c36690e952d7">
+            <useCaseMoniker
+              Id="77bf450b-d63a-4437-9a6f-921c301f280b"
+              LastKnownName="Поиск"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+          <extend
+            Id="c2b3af33-cf49-4a5e-a48f-560372100b09">
+            <useCaseMoniker
+              Id="e470f466-0516-4fb9-a892-1c0799021b3c"
+              LastKnownName="Фильтрация"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+          <extend
+            Id="0efd240b-7ddd-41b9-ad1d-53c313273f25">
+            <useCaseMoniker
+              Id="f44b6901-9ad0-47a9-a9d2-b9ed7d22b7e0"
+              LastKnownName="Удаление кроссворда"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+          <extend
+            Id="ab36f276-6614-4668-a88b-8f2da914fbbb">
+            <useCaseMoniker
+              Id="859acf4e-fd59-4b14-9892-0f6eac88cb2c"
+              LastKnownName="Редактирование кроссворда"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e470f466-0516-4fb9-a892-1c0799021b3c"
+        name="Фильтрация"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="77bf450b-d63a-4437-9a6f-921c301f280b"
+        name="Поиск"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="09c61093-4ac4-406d-9953-901f4adb1ac0"
+        name="Решение кроссворда"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="03920210-5012-44aa-8ad3-852d42ad04d3">
+            <useCaseMoniker
+              Id="a92a3a80-f97e-4ac3-ad1b-870b248e440b"
+              LastKnownName="Использование подсказок"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="d86a9795-e709-40ba-af9f-4a15a72184ab">
+            <useCaseMoniker
+              Id="e9046a3e-7a65-4768-ae35-e9ce4ccd38cf"
+              LastKnownName="Оценка кроссворда"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e9046a3e-7a65-4768-ae35-e9ce4ccd38cf"
+        name="Оценка кроссворда"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a92a3a80-f97e-4ac3-ad1b-870b248e440b"
+        name="Использование подсказок"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="e42ea8f5-1958-4279-8d02-536a6596db9b">
+            <useCaseMoniker
+              Id="9a9a5445-47e8-4a2c-8989-c8c1b3542c0a"
+              LastKnownName="Списывание игровой валюты"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="76aa0f59-8c87-4c70-8ea5-1368ae8a1b24"
+        name="Выход из аккаунта"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="e7c296a1-566a-4b0c-becf-3a7cb160fae0">
+            <useCaseMoniker
+              Id="8875908d-c561-4ee6-9dfb-07769de81ad7"
+              LastKnownName="Сохранение игровой валюты в базе данных"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9a9a5445-47e8-4a2c-8989-c8c1b3542c0a"
+        name="Списывание игровой валюты"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="ca49f05e-465f-45a6-abf4-e63f17854275"
+            LastKnownName="CrosswordPuzzle"
+            LastKnownLocation="CrosswordPuzzleUCD.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8875908d-c561-4ee6-9dfb-07769de81ad7"
+        name="Сохранение игровой валюты в базе данных"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="305ed767-02a5-4eff-87b8-bcde7c65a094"
+        name="Суп"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="5d83c84e-230e-4494-9cfe-93a7af354777"
+        name="Борщ"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="db125afe-7112-459c-922d-3b835d3ac323"
+            isSubstitutable="false">
+            <classMoniker
+              Id="305ed767-02a5-4eff-87b8-bcde7c65a094"
+              LastKnownName="Суп"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fd666e0f-671b-4dbb-a235-4d271c6e0bec"
+        name="Суп-пюре"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="f1fd16b0-6742-4769-9c48-3ec5b7cf32aa"
+            isSubstitutable="false">
+            <classMoniker
+              Id="305ed767-02a5-4eff-87b8-bcde7c65a094"
+              LastKnownName="Суп"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1c7e26fb-d947-4ec5-8296-48c5ca03a7ee"
+        name="Приготовление супа"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="27bd2f2d-2eb4-458d-a662-6e84e084de89"
+        name="Приготовление супа-пюре"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="fb7d43db-86c1-4aea-9984-ea87dc52214d">
+            <interfaceMoniker
+              Id="49d0f23d-817b-4036-8f39-f3ce33c5ec93"
+              LastKnownName="Приготовление супа"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="8061cada-e5a9-4e1f-beb7-d1951adf695e"
+            name="сварить суп"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="f685e814-b5ea-4780-b6ae-a14fa14d5e6a"
+            name="приготовить бульон"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="7a972e6b-6858-4a0d-befc-972cc7af646a"
+            name="подготовить овощи"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="1ea92d1e-8da6-43cc-9e78-4dbe2b6d3160"
+            name="разлить по тарелкам"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="49d0f23d-817b-4036-8f39-f3ce33c5ec93"
+        name="Приготовление супа"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="3a9b6d3b-e97e-4bc6-a2e6-65418e31f65d"
+            name="сварить суп"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="43b37e5b-175b-4c34-a23f-6d019feca1a3"
+            name="приготовить бульон"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="728788bd-c2a8-4cd7-aff4-2975ea2b07b1"
+            name="подготовить овощи"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="471b40c0-5939-4eff-a971-e67ba9f51102"
+            name="разлить по тарелкам"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="aff89a94-5a97-4f91-8d72-59f938af1564"
+        name="Приготовление борща"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="f944f4c5-1dc8-4843-b619-d8aadf6a0d1c">
+            <interfaceMoniker
+              Id="49d0f23d-817b-4036-8f39-f3ce33c5ec93"
+              LastKnownName="Приготовление супа"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e96b4b2a-fc1f-4bfb-9f6b-67be2e17c60a"
+            name="сварить суп"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="d13ca101-1ca7-4922-9ecd-3376f1fea6ca"
+            name="приготовить бульон"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="39220613-3619-458c-bb46-4b183ff02bcc"
+            name="подготовить овощи"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="b9feda6e-8f37-4d17-88cd-902a6eda82fb"
+            name="разлить по тарелкам"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="82242486-c6a3-43dc-8110-5f95f7422cb0"
+        name="Приготовление_супа"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="2d97fb48-b2d6-420e-bdbf-fb5ac201f605"
+            name="приготовитьСуп"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="e14932f7-905b-4c15-a718-03c20b0016dc"
+            name="подготовитьБульон"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="f05b1b94-5be0-4829-aca5-c33180c86f1d"
+            name="подготовитьОвощи"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="03b1e75d-8ebe-4313-a577-e244013cdedf"
+            name="разлитьПоТарелкам"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+          <operation
+            Id="316bf39c-436e-4466-bfde-26dc4649e0b6"
+            name="заправитьСметаной"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="706a50bc-0350-4fcf-8d0c-b17a157c3586"
+        name="ПриготовлениеБорща"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="e93a4c79-4bc9-4fbf-a321-4a52ad6a2933"
+            isSubstitutable="false">
+            <classMoniker
+              Id="82242486-c6a3-43dc-8110-5f95f7422cb0"
+              LastKnownName="Приготовление_супа"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a7ce552a-16ce-45ba-b6e4-bdfb7a65bf54"
+            name="подготовитьОвощи"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="d7dbea2b-66cb-411f-be68-98b9a8fe9bcd"
+        name="ПриготовлениеСупаПюре"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="30f9239b-e2c5-47b9-84a0-90c9b6360b3c"
+            isSubstitutable="false">
+            <classMoniker
+              Id="82242486-c6a3-43dc-8110-5f95f7422cb0"
+              LastKnownName="Приготовление_супа"
+              LastKnownLocation="CrosswordPuzzleUCD.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="d3016123-6279-4678-b63b-7bb3558c41dc"
+            name="подготовитьОвощи"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

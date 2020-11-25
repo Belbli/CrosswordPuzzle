@@ -19,6 +19,8 @@ namespace Client
         public static ListBox lb;
         CrossField field;
         public User user;
+        private const int wordHintCost = 150;
+        private const int letterHintCost = 30;
         public MainWindow.SetCoinsDelegate setCoinsDelegate;
 
         public static int cellSize = 25;
@@ -29,10 +31,11 @@ namespace Client
             this.setCoinsDelegate = setCoinsDelegate;
             this.user = user;
             field.createCrossFields();
-           
+            
             labels = field.getWords();
             InitializeComponent();
-            
+            if (user != null)
+                hintPanel.Visibility = Visibility.Visible;
             for (int i = 0; i < labels.Count; i++)
             {
                 for (int j = 0; j < labels[i].getWord().Count; j++)
@@ -98,7 +101,7 @@ namespace Client
 
         private void LetterHint_Click(object sender, RoutedEventArgs e)
         {
-            if(field.solvedWords < labels.Count)
+            if(field.solvedWords < labels.Count && letterHintCost < user.Coinsk__BackingField)
             {
                 Random rand = new Random();
                 int wordIndex;
@@ -130,13 +133,16 @@ namespace Client
                             labels[wordIndex - 1].getWord()[p2.X].Text = labels[wordIndex].answer[letterIndex].ToString();
                         }
                     }
+                    user.Coinsk__BackingField -= letterHintCost;
+                    CoinsTb.Text = user.Coinsk__BackingField.ToString();
+                    setCoinsDelegate(user.Coinsk__BackingField);
                 }
             }
         }
 
         private void WordHint_Click(object sender, RoutedEventArgs e)
         {
-            if (field.solvedWords < labels.Count)
+            if (field.solvedWords < labels.Count && wordHintCost < user.Coinsk__BackingField)
             {
                 Random rand = new Random();
                 int wordIndex;
@@ -149,6 +155,11 @@ namespace Client
                 {
                     labels[wordIndex].getWord()[i].Text = labels[wordIndex].answer[i].ToString();
                 }
+                user.Coinsk__BackingField -= labels[wordIndex].answer.Length * 20;
+                setCoinsDelegate(user.Coinsk__BackingField);
+                user.Coinsk__BackingField -= wordHintCost;
+                setCoinsDelegate(user.Coinsk__BackingField);
+                CoinsTb.Text = user.Coinsk__BackingField.ToString();
             }
         }
     }

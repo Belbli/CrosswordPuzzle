@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3c324879-71be-46c7-9fd7-4c813a0b91c0" name="CrosswordPuzzleUCD" linkedPackageId="8e6a7d56-e18a-453d-8a98-ecffdd669782" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="6ff9993b-5cf4-4e46-bb73-7363126c498f">
+      <profileInstance Id="c4f9a2f3-e399-4ab0-8b7c-df8245ca2610" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="067f5071-31fc-47da-b8b3-eb8d9b048822">
+      <profileInstance Id="e50e7daa-e81f-4bb2-b7ed-9c346bcf3890" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" name="CrosswordPuzzle" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="ca49f05e-465f-45a6-abf4-e63f17854275" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d4a0a0ec-3a78-4310-8075-3a34fb157eb9" name="Пользователь" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f5d9f50-7111-4955-b7a3-fbf7c185cac5" />
+        <targetEnds>
+          <association Id="734651eb-cbeb-4a7a-8e87-394c82f6c16d" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Регистрация" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="89bb8f88-1993-4e33-b1c6-14ce407cc44b" LastKnownName="Регистрация" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1f04b0a8-c2c4-49b1-a305-c4e1cf91de89" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="41fe7f29-2eb8-4a51-887a-5da1d477c3d2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9057eac8-d9af-4553-80a5-12e1dca4ffa5" name="Регистрация" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8b937234-f39b-4a41-94bc-758377d33b4f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3683143a-ff53-47fd-9636-e3bbadd6b29a" />
+          </association>
+          <association Id="7900579d-0cb9-4dd3-8bfc-617fb40545c7" isDerived="false" sourceEndRoleName="User" targetEndRoleName="Вход в аккаунт" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e153eeb7-d9c2-499b-9b09-80f9e0a9dbd8" LastKnownName="Вход в аккаунт" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="93aa3cf6-bc21-42e1-9eb1-66fb682a3bca" name="User" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="537549ca-f4c1-4616-8690-bc2789f7cb2f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e547381-c7fb-4427-85d6-d17c420de695" name="Вход в аккаунт" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="36c3078e-7316-4781-bb74-cfe9c02d36a5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1e419ac1-2b08-489f-83d7-dc29e3a8476e" />
+          </association>
+          <association Id="e61e8486-540e-4dda-a15d-94208f9e2abb" isDerived="false" sourceEndRoleName="Пользователь" targetEndRoleName="Просмотр кроссвордов" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="082a1d34-983a-4b56-974e-2b15726d6795" LastKnownName="Просмотр кроссвордов" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9b17c6f2-c1f9-4ea1-937c-99a879c0df15" name="Пользователь" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="501a8c9f-6570-4df2-9f61-23ccd264e515" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7ae1b09e-f34c-42c3-ae99-bb8aec38b692" name="Просмотр кроссвордов" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3dc68e32-0742-4e9e-92f3-5e0569ac178f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="2fff0ac4-a7a7-4172-a907-a10c4dee483e" />
+          </association>
+          <association Id="47ca7d61-fb8b-47bc-8d4d-9ada1f854c92" isDerived="false" sourceEndRoleName="Пользователь" targetEndRoleName="Создание кроссворда" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a6bbf6df-41b9-4ce5-96ae-382a4f9eee18" LastKnownName="Создание кроссворда" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="81cc0544-0466-457c-95b1-b4d06f51a588" name="Пользователь" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="80345163-089f-4857-96a9-61abda7f03e6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9a068d5a-90f1-4ace-a213-bf29d02cfc08" name="Создание кроссворда" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4af123a5-c728-472f-93d7-fc8b34ebdbca" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="159691a0-a54d-475d-b15e-71f480934eaf" />
+          </association>
+          <association Id="d902a0d7-454a-4bcc-a4c4-aa96c722378d" isDerived="false" sourceEndRoleName="Пользователь" targetEndRoleName="Решение кроссворда" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9880f29e-615c-4e09-8ff9-fcb361a0c21b" LastKnownName="Решение кроссворда" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3db144ea-94a7-4f90-abca-4bc6198612bb" name="Пользователь" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a7338c4f-69f9-46ec-a2cb-c45e44a46cf9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e4d5f395-daf4-43d1-9044-4ed0a643dcae" name="Решение кроссворда" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="063e46fc-acb1-4ed8-bb67-1634848a1538" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3a4c911c-42e3-4140-9804-9bc0a8b0f64f" />
+          </association>
+          <association Id="c227bb34-5a1f-4426-b733-34e8f3259d60" isDerived="false" sourceEndRoleName="Пользователь" targetEndRoleName="Выход из аккаунта" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="16fb3ccc-7bbe-4743-b0fc-f55ae30bd1b4" LastKnownName="Выход из аккаунта" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="23654076-3915-407a-9d96-fa45017a04f1" name="Пользователь" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="2607baa5-65db-4a3b-b5d1-7d2b6f7d2b62" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ba91fca6-f21d-4196-9e59-5c784438c822" name="Выход из аккаунта" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d1b069b4-a45d-4f9e-a3fa-10e8380257fd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="405520d8-dbe4-432c-ba53-2712097eb51a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="89bb8f88-1993-4e33-b1c6-14ce407cc44b" name="Регистрация" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="28f2ba35-58d5-4a61-b45d-f96cc81b4a0f" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="a6bbf6df-41b9-4ce5-96ae-382a4f9eee18" name="Создание кроссворда" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="dae0b8db-6ba1-4e8c-abbb-e1ba077f2703" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="082a1d34-983a-4b56-974e-2b15726d6795" name="Просмотр кроссвордов" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d5b09990-f175-4e35-a4f0-c975a0ab001a" />
+        <extendedCases>
+          <extend Id="4d07aa6f-d191-4858-9bd0-a5aa2b201172">
+            <useCaseMoniker Id="87293c4a-7e43-4464-8c3b-052d43f94367" LastKnownName="Просмотр созданных кроссвордов" />
+            <elementDefinition Id="021752b3-a716-4c38-a714-d1d01b530cac" />
+          </extend>
+          <extend Id="fc184b74-9dd5-468b-9043-4f22125d996a">
+            <useCaseMoniker Id="eec0014e-f8b0-441b-8746-e48e484e38b7" LastKnownName="Просмотр кроссвордов других пользователей" />
+            <elementDefinition Id="2e3a2e05-7072-47ae-89be-7a2caf09cae6" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="3170fd43-bce3-404d-ac52-e3bf0f8f601e" name="Удаление кроссворда" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f44b6901-9ad0-47a9-a9d2-b9ed7d22b7e0" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b9611303-2b49-42da-8fe5-b26e98faf555" name="Редактирование кроссворда" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="859acf4e-fd59-4b14-9892-0f6eac88cb2c" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e153eeb7-d9c2-499b-9b09-80f9e0a9dbd8" name="Вход в аккаунт" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d1222d65-85f7-44f1-ba2c-d029c53fe106" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="87293c4a-7e43-4464-8c3b-052d43f94367" name="Просмотр созданных кроссвордов" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1002421a-80f9-427a-a242-4136b89d44c2" />
+        <extendedCases>
+          <extend Id="36514848-20e8-4059-806e-c9453eb51b6a">
+            <useCaseMoniker Id="22863058-d322-43c9-aef4-e8f295391d8f" LastKnownName="Фильтрация" />
+            <elementDefinition Id="ba0517fa-e32e-4cc0-bdb6-aa3fa34d04a2" />
+          </extend>
+          <extend Id="dcbddc4f-6c0a-4e37-b67e-341a98baa8be">
+            <useCaseMoniker Id="4b4a2255-a65c-498a-a901-5eac9842f12c" LastKnownName="Поиск" />
+            <elementDefinition Id="b8a1aad3-ad49-4fc8-ba3c-adb5196114bf" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="eec0014e-f8b0-441b-8746-e48e484e38b7" name="Просмотр кроссвордов других пользователей" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ab678286-d68b-4295-9933-0101476f23d9" />
+        <extendedCases>
+          <extend Id="021cf3ff-bf13-46f7-8fda-f5410111ac11">
+            <useCaseMoniker Id="4b4a2255-a65c-498a-a901-5eac9842f12c" LastKnownName="Поиск" />
+            <elementDefinition Id="5850e97b-4940-4e4d-9b89-c36690e952d7" />
+          </extend>
+          <extend Id="c9da5156-6cd9-41fb-b588-75aee87f8302">
+            <useCaseMoniker Id="22863058-d322-43c9-aef4-e8f295391d8f" LastKnownName="Фильтрация" />
+            <elementDefinition Id="c2b3af33-cf49-4a5e-a48f-560372100b09" />
+          </extend>
+          <extend Id="19e58874-36a0-4de3-b9a8-159c35a8cdda">
+            <useCaseMoniker Id="3170fd43-bce3-404d-ac52-e3bf0f8f601e" LastKnownName="Удаление кроссворда" />
+            <elementDefinition Id="0efd240b-7ddd-41b9-ad1d-53c313273f25" />
+          </extend>
+          <extend Id="ee5df637-7ce5-466c-b209-20ea1ef556b5">
+            <useCaseMoniker Id="b9611303-2b49-42da-8fe5-b26e98faf555" LastKnownName="Редактирование кроссворда" />
+            <elementDefinition Id="ab36f276-6614-4668-a88b-8f2da914fbbb" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="22863058-d322-43c9-aef4-e8f295391d8f" name="Фильтрация" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e470f466-0516-4fb9-a892-1c0799021b3c" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="4b4a2255-a65c-498a-a901-5eac9842f12c" name="Поиск" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="77bf450b-d63a-4437-9a6f-921c301f280b" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="9880f29e-615c-4e09-8ff9-fcb361a0c21b" name="Решение кроссворда" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="09c61093-4ac4-406d-9953-901f4adb1ac0" />
+        <extendedCases>
+          <extend Id="da01c6de-1237-4ba6-b151-3ab53b0a6bfe">
+            <useCaseMoniker Id="d22f6026-3e0e-495b-be02-88aba3699e0f" LastKnownName="Использование подсказок" />
+            <elementDefinition Id="03920210-5012-44aa-8ad3-852d42ad04d3" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="95e3caa5-1302-4327-9a8e-58d5eeb441fd">
+            <useCaseMoniker Id="54124c0d-9c0f-4cd9-ae60-423b9ca869b9" LastKnownName="Оценка кроссворда" />
+            <elementDefinition Id="d86a9795-e709-40ba-af9f-4a15a72184ab" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="54124c0d-9c0f-4cd9-ae60-423b9ca869b9" name="Оценка кроссворда" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e9046a3e-7a65-4768-ae35-e9ce4ccd38cf" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="d22f6026-3e0e-495b-be02-88aba3699e0f" name="Использование подсказок" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a92a3a80-f97e-4ac3-ad1b-870b248e440b" />
+        <additions>
+          <include Id="f0acf3d6-47fc-4cbf-aa05-4c40c6062f68">
+            <useCaseMoniker Id="b072df98-7e6d-4218-a632-5159c6e5073a" LastKnownName="Списывание игровой валюты" />
+            <elementDefinition Id="e42ea8f5-1958-4279-8d02-536a6596db9b" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="16fb3ccc-7bbe-4743-b0fc-f55ae30bd1b4" name="Выход из аккаунта" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="76aa0f59-8c87-4c70-8ea5-1368ae8a1b24" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b072df98-7e6d-4218-a632-5159c6e5073a" name="Списывание игровой валюты" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9a9a5445-47e8-4a2c-8989-c8c1b3542c0a" />
+        <subjects>
+          <subsystemMoniker Id="1587ae54-3bed-4ff7-ac93-dea8bb3cd72a" LastKnownName="CrosswordPuzzle" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="8e6a7d56-e18a-453d-8a98-ecffdd669782" name="CrosswordPuzzleUCD">
+    <elementDefinition Id="def3c7af-e74d-43cf-86a8-2addf531364b" />
+  </package>
+</useCaseModelRoot>

@@ -24,31 +24,25 @@ namespace Client
         private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
             int res = client.signUpUser("", LoginTb.Text, PwdTb.Password);
-           
             if(res == 1)
             {
                 MessageBox.Show("Registered Successfully!");
-                this.Close();
+                Close();
             }
             else
-            {
                 MessageBox.Show("User exists");
-            }
         }
 
         private void LogInBtn_Click(object sender, RoutedEventArgs e)
         {
             User user = client.SignInUser(LoginTb.Text, PwdTb.Password);
-
             if(user != null)
             {
                 this.sender(user);
                 Close();
             }
             else
-            {
                 MessageBox.Show("Incorrect login or password");
-            }
         }
 
         private void CloseModal_Click(object sender, RoutedEventArgs e)
